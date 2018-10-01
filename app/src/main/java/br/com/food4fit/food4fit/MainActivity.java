@@ -1,5 +1,8 @@
 package br.com.food4fit.food4fit;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -50,13 +53,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        setTitle(item.getTitle());
         int id = item.getItemId();
         if (id == R.id.nav_home) {
 
+        } else if (id == R.id.nav_sair) {
+            logout();
+            return true;
         }
 
+        setTitle(item.getTitle());
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void logout() {
+        AccountManager am = AccountManager.get(this);
+        Account[] accounts = am.getAccountsByType("FOOD4FIT");
+        if (accounts.length > 0) {
+            am.removeAccount(accounts[0], null, null);
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
     }
 }

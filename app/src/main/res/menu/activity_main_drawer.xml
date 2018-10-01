@@ -9,5 +9,11 @@
             android:icon="@android:drawable/ic_delete"
             android:checked="true"
             android:title="Página Inicial" />
+
+        <item
+            android:id="@+id/nav_sair"
+            android:icon="@android:drawable/ic_delete"
+            android:checked="true"
+            android:title="Sair" />
     </group>
 </menu>
