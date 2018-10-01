@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_brackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -80,12 +80,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/TextAppearence.App.TextInputLayout"
+            android:id="@+id/til_login_email"
+            app:errorEnabled="true"
             android:textColorHint="#ffffff">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
+                android:id="@+id/edt_login_email"
                 android:hint="E-mail" />
         </android.support.design.widget.TextInputLayout>
 
@@ -93,12 +96,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/TextAppearence.App.TextInputLayout"
+            android:id="@+id/til_login_senha"
+            app:errorEnabled="true"
             android:textColorHint="#ffffff">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:id="@+id/edt_login_senha"
                 android:hint="Senha" />
         </android.support.design.widget.TextInputLayout>
 
@@ -124,6 +130,7 @@
                 android:layout_alignParentRight="true"
                 android:background="@drawable/white_button"
                 android:id="@+id/btn_login_entrar"
+                android:onClick="login"
                 android:text="Entrar" />
         </RelativeLayout>
     </LinearLayout>

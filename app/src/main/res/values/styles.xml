@@ -14,14 +14,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="TextAppearance.App.TextInputLayout" parent="@android:style/TextAppearance">
-        <item name="colorControlNormal">#E85858</item>
+    <style name="TextAppearence.App.TextInputLayout" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">#ffffff</item>
         <item name="colorControlActivated">#E85858</item>
         <item name="colorControlHighlight">#E85858</item>
-    </style>
-
-    <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
-        <item name="colorControlNormal">#ffffff</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.NavTheme">

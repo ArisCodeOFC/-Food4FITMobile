@@ -2,6 +2,7 @@ package br.com.food4fit.food4fit;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,12 +10,14 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private AccountManager accountManager;
     private DrawerLayout drawer;
 
     @Override
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        accountManager = AccountManager.get(this);
         drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -54,25 +58,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_home) {
-
-        } else if (id == R.id.nav_sair) {
+        if (id == R.id.nav_sair) {
             logout();
-            return true;
         }
 
-        setTitle(item.getTitle());
-        drawer.closeDrawer(GravityCompat.START);
+        if (item.isCheckable()) {
+            setTitle(item.getTitle());
+            drawer.closeDrawer(GravityCompat.START);
+        }
+
         return true;
     }
 
     private void logout() {
-        AccountManager am = AccountManager.get(this);
-        Account[] accounts = am.getAccountsByType("FOOD4FIT");
-        if (accounts.length > 0) {
-            am.removeAccount(accounts[0], null, null);
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
-        }
+        new AlertDialog.Builder(this)
+            .setMessage("Você realmente deseja sair de sua conta?")
+            .setCancelable(false)
+            .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    Account[] accounts = accountManager.getAccountsByType("FOOD4FIT");
+                    if (accounts.length > 0) {
+                        accountManager.removeAccount(accounts[0], null, null);
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+                    }
+                }
+            })
+            .setNegativeButton("Não", null)
+            .show();
     }
 }

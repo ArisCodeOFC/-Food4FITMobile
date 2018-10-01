@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_sair"
             android:icon="@android:drawable/ic_delete"
-            android:checked="true"
+            android:checkable="false"
             android:title="Sair" />
     </group>
 </menu>
