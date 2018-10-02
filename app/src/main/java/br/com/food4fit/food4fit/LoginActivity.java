@@ -9,6 +9,14 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import br.com.food4fit.food4fit.config.AppDatabase;
+import br.com.food4fit.food4fit.config.RetrofitConfig;
+import br.com.food4fit.food4fit.model.LoginModel;
+import br.com.food4fit.food4fit.model.Usuario;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
     private AccountManager accountManager;
     private TextInputLayout tilEmail;
@@ -24,8 +32,14 @@ public class LoginActivity extends AppCompatActivity {
         accountManager = AccountManager.get(this);
         Account[] accounts = accountManager.getAccountsByType("FOOD4FIT");
         if (accounts.length > 0) {
-            startActivity(new Intent(this, MainActivity.class));
-            finish();
+            Account account = accounts[0];
+            Usuario usuario = AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().findByEmail(account.name);
+            if (usuario != null) {
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("usuario", usuario);
+                startActivity(intent);
+                finish();
+            }
         }
 
         tilEmail = findViewById(R.id.til_login_email);
@@ -41,8 +55,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        String email = edtEmail.getText().toString();
-        String senha = edtSenha.getText().toString();
+        final String email = edtEmail.getText().toString();
+        final String senha = edtSenha.getText().toString();
         tilEmail.setError("");
         tilSenha.setError("");
         if (email.isEmpty()) {
@@ -55,9 +69,33 @@ public class LoginActivity extends AppCompatActivity {
             tilSenha.setError("Preencha uma senha");
             edtSenha.requestFocus();
         } else {
-            setAccount(email, senha, "AAA");
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish();
+            LoginModel model = new LoginModel(email, senha);
+            Call<Usuario> call = new RetrofitConfig().getUsuarioService().login(model);
+            call.enqueue(new Callback<Usuario>() {
+                @Override
+                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    if (response.code() == 401) {
+                        tilSenha.setError("Email ou senha incorretos.");
+                        edtSenha.setText("");
+                    } else {
+                        Usuario usuario = response.body();
+                        setAccount(usuario.getEmail(), senha, usuario.getHash());
+                        AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().insert(usuario);
+
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("usuario", usuario);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Usuario> call, Throwable t) {
+                    tilSenha.setError("Erro na comunicação com o servidor");
+                    edtSenha.setText("");
+                    t.printStackTrace();
+                }
+            });
         }
     }
 }

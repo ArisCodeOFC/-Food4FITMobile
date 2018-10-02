@@ -15,10 +15,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import br.com.food4fit.food4fit.config.AppDatabase;
+import br.com.food4fit.food4fit.model.Usuario;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AccountManager accountManager;
     private DrawerLayout drawer;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            usuario = (Usuario) intent.getSerializableExtra("usuario");
+            if (usuario == null) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+            }
+        }
 
         accountManager = AccountManager.get(this);
         drawer = findViewById(R.id.drawer_layout);
@@ -38,6 +52,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (navigationView.getMenu().size() > 0) {
             onNavigationItemSelected(navigationView.getMenu().getItem(0));
         }
+
+        TextView txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
+        TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
+        txtDrawerNome.setText(usuario.getNome() + " " + usuario.getSobrenome());
+        txtDrawerEmail.setText(usuario.getEmail());
     }
 
     @Override
@@ -78,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 public void onClick(DialogInterface dialog, int id) {
                     Account[] accounts = accountManager.getAccountsByType("FOOD4FIT");
                     if (accounts.length > 0) {
+                        AppDatabase.getDatabase(MainActivity.this).getUsuarioDAO().delete(usuario.getId());
                         accountManager.removeAccount(accounts[0], null, null);
                         startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         finish();
