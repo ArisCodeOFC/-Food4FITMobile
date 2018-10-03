@@ -79,13 +79,18 @@ public class LoginActivity extends AppCompatActivity {
                         edtSenha.setText("");
                     } else {
                         Usuario usuario = response.body();
-                        setAccount(usuario.getEmail(), senha, usuario.getHash());
-                        AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().insert(usuario);
+                        if (usuario != null) {
+                            setAccount(usuario.getEmail(), senha, usuario.getHash());
+                            AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().insert(usuario);
 
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("usuario", usuario);
-                        startActivity(intent);
-                        finish();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra("usuario", usuario);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            tilSenha.setError("Email ou senha incorretos.");
+                            edtSenha.setText("");
+                        }
                     }
                 }
 

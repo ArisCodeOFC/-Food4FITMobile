@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
         txtDrawerNome.setText(usuario.getNome() + " " + usuario.getSobrenome());
         txtDrawerEmail.setText(usuario.getEmail());
+
     }
 
     @Override
@@ -79,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_sair) {
             logout();
+        } else if (id == R.id.nav_home) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new HomeFragment()).commit();
+        } else if (id == R.id.nav_dietas) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new DietasFragment()).commit();
         }
 
         if (item.isCheckable()) {
