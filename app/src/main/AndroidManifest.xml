@@ -26,7 +26,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <service
             android:name=".account.AuthenticatorService"
             android:enabled="true"
@@ -39,6 +40,16 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" /> <!-- We haven't defined this -->
         </service>
+
+        <activity
+            android:name=".CadastrarDietaActivity"
+            android:label="@string/title_activity_cadastrar_dieta"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.food4fit.food4fit.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
