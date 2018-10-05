@@ -51,7 +51,7 @@
             android:clickable="true"
             android:textColor="#ffffff"
             android:background="?selectableItemBackgroundBorderless"
-            android:drawableTop="@drawable/baseline_share_24" />
+            android:drawableTop="@drawable/baseline_share_24_white" />
 
         <TextView
             android:layout_width="0dp"
@@ -65,7 +65,7 @@
             android:clickable="true"
             android:textColor="#ffffff"
             android:background="?selectableItemBackgroundBorderless"
-            android:drawableTop="@drawable/baseline_create_24" />
+            android:drawableTop="@drawable/baseline_create_24_white" />
 
         <TextView
             android:layout_width="0dp"

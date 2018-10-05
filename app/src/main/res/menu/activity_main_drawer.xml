@@ -6,13 +6,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@drawable/baseline_home_24"
             android:checked="true"
             android:title="Página Inicial" />
 
         <item
             android:id="@+id/nav_dietas"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@drawable/baseline_room_service_24"
             android:title="Dietas" />
 
         <item
