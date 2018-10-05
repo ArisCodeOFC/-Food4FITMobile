@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -35,10 +36,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = getIntent();
         if (intent != null) {
             usuario = (Usuario) intent.getSerializableExtra("usuario");
-            if (usuario == null) {
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
-            }
+        }
+
+        if (intent == null || usuario == null) {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         }
 
         accountManager = AccountManager.get(this);
@@ -57,6 +59,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
         txtDrawerNome.setText(usuario.getNome() + " " + usuario.getSobrenome());
         txtDrawerEmail.setText(usuario.getEmail());
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
     }
 
     @Override

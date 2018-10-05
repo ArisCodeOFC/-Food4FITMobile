@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="bottomSheetDialogTheme">@style/ReaderBottomSheelDialog</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -21,7 +22,19 @@
         <item name="colorControlHighlight">#E85858</item>
     </style>
 
+    <style name="TextAppearence.App.TextInputLayoutHome" parent="TextAppearence.App.TextInputLayout">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+    </style>
+
     <style name="ThemeOverlay.AppCompat.NavTheme">
         <item name="colorPrimary">#000000</item>
+    </style>
+
+    <style name="ReaderBottomSheelDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">512dp</item>
     </style>
 </resources>

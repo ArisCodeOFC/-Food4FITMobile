@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                         Usuario usuario = response.body();
                         if (usuario != null) {
                             setAccount(usuario.getEmail(), senha, usuario.getHash());
+                            AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().delete(usuario.getId());
                             AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().insert(usuario);
 
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);

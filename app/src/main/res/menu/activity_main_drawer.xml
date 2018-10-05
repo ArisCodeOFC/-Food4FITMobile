@@ -3,21 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/group_drawer_1">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/baseline_home_24"
             android:checked="true"
             android:title="Página Inicial" />
+    </group>
 
+    <group android:checkableBehavior="single" android:id="@+id/group_drawer_2">
         <item
             android:id="@+id/nav_dietas"
             android:icon="@drawable/baseline_room_service_24"
             android:title="Dietas" />
 
         <item
+            android:id="@+id/nav_refeicoes"
+            android:icon="@drawable/baseline_restaurant_24"
+            android:title="Refeições" />
+
+        <item
+            android:id="@+id/nav_acompanhamento"
+            android:icon="@drawable/baseline_timeline_24"
+            android:title="Acompanhamento" />
+
+        <item
+            android:id="@+id/nav_hidratacao"
+            android:icon="@drawable/baseline_opacity_24"
+            android:title="Hidratação" />
+
+        <item
+            android:id="@+id/nav_armario"
+            android:icon="@drawable/baseline_assignment_24"
+            android:title="Armário" />
+    </group>
+
+    <group android:checkableBehavior="single" android:id="@+id/group_drawer_3">
+        <item
+            android:id="@+id/nav_configuracoes"
+            android:icon="@drawable/baseline_settings_black_18"
+            android:title="Configurações" />
+
+        <item
+            android:id="@+id/nav_website"
+            android:icon="@drawable/baseline_store_24"
+            android:title="Website" />
+
+        <item
             android:id="@+id/nav_sair"
-            android:icon="@android:drawable/ic_delete"
+            android:icon="@drawable/baseline_power_settings_new_24"
             android:checkable="false"
             android:title="Sair" />
     </group>
