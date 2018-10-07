@@ -25,9 +25,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_main"
             android:launchMode="singleTop"
-            android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <service
@@ -40,12 +40,22 @@
 
             <meta-data
                 android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/authenticator" /> <!-- We haven't defined this -->
+                android:resource="@xml/authenticator" />
         </service>
 
         <activity
             android:name=".CadastrarDietaActivity"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_cadastrar_dieta"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.food4fit.food4fit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DietaActivity"
+            android:label="@string/title_activity_dieta"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

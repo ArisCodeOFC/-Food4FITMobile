@@ -10,14 +10,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.food4fit.food4fit.R;
-import br.com.food4fit.food4fit.model.Dieta;
+import br.com.food4fit.food4fit.model.DietaEntity;
 
 public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> {
-    private final List<Dieta> dietas;
+    private final List<DietaEntity> dietas;
     private final LayoutInflater inflater;
     private OnItemClickListener listener;
 
-    public DietaAdapter(Context context, List<Dieta> data, OnItemClickListener listener) {
+    public DietaAdapter(Context context, List<DietaEntity> data, OnItemClickListener listener) {
         this.inflater = LayoutInflater.from(context);
         this.dietas = data;
         this.listener = listener;
@@ -47,7 +47,7 @@ public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> 
             txtTitulo = view.findViewById(R.id.txt_titulo_dieta);
         }
 
-        public void bind(final Dieta dieta, final OnItemClickListener listener) {
+        public void bind(final DietaEntity dieta, final OnItemClickListener listener) {
             txtTitulo.setText(dieta.getTitulo());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -61,6 +61,6 @@ public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> 
     }
 
     public interface OnItemClickListener {
-        void onItemClick(Dieta item);
+        void onItemClick(DietaEntity item);
     }
 }

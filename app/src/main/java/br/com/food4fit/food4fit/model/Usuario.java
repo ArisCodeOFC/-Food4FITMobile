@@ -8,8 +8,7 @@ import java.io.Serializable;
 
 @Entity(tableName = "tbl_usuario")
 public class Usuario implements Serializable {
-    @ColumnInfo(name = "id")
-    @PrimaryKey
+    @ColumnInfo(name = "id") @PrimaryKey
     private int id;
 
     @ColumnInfo(name = "nome")

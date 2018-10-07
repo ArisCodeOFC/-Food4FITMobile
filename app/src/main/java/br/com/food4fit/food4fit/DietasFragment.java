@@ -15,27 +15,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.food4fit.food4fit.adapter.DietaAdapter;
-import br.com.food4fit.food4fit.model.Dieta;
+import br.com.food4fit.food4fit.config.AppDatabase;
+import br.com.food4fit.food4fit.model.DietaEntity;
 
 public class DietasFragment extends Fragment {
+    private List<DietaEntity> dietas = new ArrayList<>();
+    private DietaAdapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dietas, container, false);
-
-        List<Dieta> dietas = new ArrayList<>();
-        dietas.add(new Dieta(1, "Dieta da Lua"));
-        dietas.add(new Dieta(2, "Dieta da Terra"));
-        dietas.add(new Dieta(3, "Dieta do Sol"));
-        dietas.add(new Dieta(4, "Dieta de Verão"));
-        dietas.add(new Dieta(5, "Dieta de Inverno"));
 
         RecyclerView rvDietas = view.findViewById(R.id.rv_dietas);
         rvDietas.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         rvDietas.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        DietaAdapter adapter = new DietaAdapter(getContext(), dietas, new DietaAdapter.OnItemClickListener() {
+        adapter = new DietaAdapter(getContext(), dietas, new DietaAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Dieta item) {
+            public void onItemClick(DietaEntity item) {
                 DietaDialogFragment dialog = new DietaDialogFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("dieta", item);
@@ -55,5 +52,13 @@ public class DietasFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        dietas.clear();
+        dietas.addAll(AppDatabase.getDatabase(getContext()).getDietaDAO().selectAll());
+        adapter.notifyDataSetChanged();
     }
 }

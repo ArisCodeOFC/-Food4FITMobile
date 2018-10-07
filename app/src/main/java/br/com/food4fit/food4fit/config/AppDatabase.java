@@ -5,14 +5,18 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import br.com.food4fit.food4fit.dao.DietaDAO;
 import br.com.food4fit.food4fit.dao.UsuarioDAO;
+import br.com.food4fit.food4fit.model.DietaEntity;
+import br.com.food4fit.food4fit.model.RefeicaoEntity;
 import br.com.food4fit.food4fit.model.Usuario;
 
-@Database(entities = {Usuario.class}, version = 1)
+@Database(entities = {Usuario.class, DietaEntity.class, RefeicaoEntity.class}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
     public abstract UsuarioDAO getUsuarioDAO();
+    public abstract DietaDAO getDietaDAO();
 
     public static AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
@@ -22,9 +26,5 @@ public abstract class AppDatabase extends RoomDatabase {
         }
 
         return INSTANCE;
-    }
-
-    public static void destroyInstance() {
-        INSTANCE = null;
     }
 }

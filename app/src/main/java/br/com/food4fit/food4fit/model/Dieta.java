@@ -1,29 +1,21 @@
 package br.com.food4fit.food4fit.model;
 
-import java.io.Serializable;
+import android.arch.persistence.room.Embedded;
+import android.arch.persistence.room.Relation;
 
-public class Dieta implements Serializable {
-    private int id;
-    private String titulo;
+import java.util.List;
 
-    public Dieta(int id, String titulo) {
-        this.id = id;
-        this.titulo = titulo;
+public class Dieta {
+    @Embedded
+    private Dieta dieta;
+    @Relation(parentColumn = "id", entityColumn = "id_dieta")
+    private List<RefeicaoEntity> refeicoes;
+
+    public Dieta getDieta() {
+        return dieta;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public List<RefeicaoEntity> getRefeicoes() {
+        return refeicoes;
     }
 }

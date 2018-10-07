@@ -15,7 +15,7 @@
         android:fontFamily="sans-serif"
         android:textStyle="bold"
         android:textSize="25sp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:textColor="#ffffff"
         android:id="@+id/txt_dialog_dieta_titulo"
         android:text="Dieta" />
@@ -36,8 +36,30 @@
             android:focusable="true"
             android:clickable="true"
             android:textColor="#ffffff"
-            android:background="?selectableItemBackgroundBorderless"
+            android:background="?selectableItemBackground"
             android:drawableTop="@drawable/baseline_check_24" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="Refeições"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif"
+            android:focusable="true"
+            android:clickable="true"
+            android:textColor="#ffffff"
+            android:id="@+id/txt_dieta_refeicoes"
+            android:background="?selectableItemBackground"
+            android:drawableTop="@drawable/baseline_room_service_white_48" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
 
         <TextView
             android:layout_width="0dp"
@@ -50,7 +72,7 @@
             android:focusable="true"
             android:clickable="true"
             android:textColor="#ffffff"
-            android:background="?selectableItemBackgroundBorderless"
+            android:background="?selectableItemBackground"
             android:drawableTop="@drawable/baseline_share_24_white" />
 
         <TextView
@@ -64,7 +86,7 @@
             android:focusable="true"
             android:clickable="true"
             android:textColor="#ffffff"
-            android:background="?selectableItemBackgroundBorderless"
+            android:background="?selectableItemBackground"
             android:drawableTop="@drawable/baseline_create_24_white" />
 
         <TextView
@@ -78,7 +100,7 @@
             android:focusable="true"
             android:clickable="true"
             android:textColor="#ffffff"
-            android:background="?selectableItemBackgroundBorderless"
+            android:background="?selectableItemBackground"
             android:drawableTop="@drawable/baseline_clear_24" />
     </LinearLayout>
 </LinearLayout>
