@@ -9,8 +9,8 @@ import java.util.List;
 public class Dieta implements Serializable {
     @Embedded
     private DietaEntity dieta;
-    @Relation(parentColumn = "id", entityColumn = "id_dieta")
-    private List<RefeicaoEntity> refeicoes;
+    @Relation(parentColumn = "id", entityColumn = "id_dieta", entity = RefeicaoEntity.class)
+    private List<Refeicao> refeicoes;
 
     public DietaEntity getDieta() {
         return dieta;
@@ -20,11 +20,11 @@ public class Dieta implements Serializable {
         this.dieta = dieta;
     }
 
-    public List<RefeicaoEntity> getRefeicoes() {
+    public List<Refeicao> getRefeicoes() {
         return refeicoes;
     }
 
-    public void setRefeicoes(List<RefeicaoEntity> refeicoes) {
+    public void setRefeicoes(List<Refeicao> refeicoes) {
         this.refeicoes = refeicoes;
     }
 }

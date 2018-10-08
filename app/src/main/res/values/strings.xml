@@ -9,6 +9,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_cadastrar_dieta">Cadastrar Dieta</string>
-    <string name="title_activity_dieta">DietaActivity</string>
+    <string name="title_activity_dieta">Dieta</string>
     <string name="title_activity_cadastrar_refeicao">Cadastrar Refeição</string>
+    <string name="title_activity_refeicao">Refeição</string>
 </resources>

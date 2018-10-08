@@ -83,7 +83,6 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
             refeicao.setDescricao(descricao);
             refeicao.setHorario(horario);
             refeicao.setIdDieta(dieta.getDieta().getId());
-            dieta.getRefeicoes().add(refeicao);
             AppDatabase.getDatabase(this).getRefeicaoDAO().insert(refeicao);
             finish();
         }

@@ -19,6 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -56,6 +57,7 @@
             android:name=".DietaActivity"
             android:label="@string/title_activity_dieta"
             android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -70,6 +72,15 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.food4fit.food4fit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".RefeicaoActivity"
+            android:label="@string/title_activity_refeicao"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".DietaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.food4fit.food4fit.DietaActivity" />
         </activity>
     </application>
 

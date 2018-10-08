@@ -8,11 +8,12 @@ import android.content.Context;
 import br.com.food4fit.food4fit.dao.DietaDAO;
 import br.com.food4fit.food4fit.dao.RefeicaoDAO;
 import br.com.food4fit.food4fit.dao.UsuarioDAO;
+import br.com.food4fit.food4fit.model.Alimento;
 import br.com.food4fit.food4fit.model.DietaEntity;
 import br.com.food4fit.food4fit.model.RefeicaoEntity;
 import br.com.food4fit.food4fit.model.Usuario;
 
-@Database(entities = {Usuario.class, DietaEntity.class, RefeicaoEntity.class}, version = 5)
+@Database(entities = {Usuario.class, DietaEntity.class, RefeicaoEntity.class, Alimento.class}, version = 6)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 

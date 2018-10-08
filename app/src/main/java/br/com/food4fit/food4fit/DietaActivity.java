@@ -16,12 +16,12 @@ import java.util.List;
 import br.com.food4fit.food4fit.adapter.RefeicaoAdapter;
 import br.com.food4fit.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.model.Dieta;
-import br.com.food4fit.food4fit.model.RefeicaoEntity;
+import br.com.food4fit.food4fit.model.Refeicao;
 
 public class DietaActivity extends AppCompatActivity {
     private Dieta dieta;
     private RefeicaoAdapter adapter;
-    private List<RefeicaoEntity> refeicoes = new ArrayList<>();
+    private List<Refeicao> refeicoes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,10 @@ public class DietaActivity extends AppCompatActivity {
 
         adapter = new RefeicaoAdapter(this, refeicoes, new RefeicaoAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(RefeicaoEntity item) {
-                
+            public void onItemClick(Refeicao item) {
+                Intent intent = new Intent(DietaActivity.this, RefeicaoActivity.class);
+                intent.putExtra("refeicao", item);
+                startActivity(intent);
             }
         });
 

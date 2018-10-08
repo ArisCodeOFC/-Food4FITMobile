@@ -10,14 +10,14 @@ import android.widget.TextView;
 import java.util.List;
 
 import br.com.food4fit.food4fit.R;
-import br.com.food4fit.food4fit.model.RefeicaoEntity;
+import br.com.food4fit.food4fit.model.Refeicao;
 
 public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHolder> {
-    private final List<RefeicaoEntity> refeicoes;
+    private final List<Refeicao> refeicoes;
     private final LayoutInflater inflater;
     private OnItemClickListener listener;
 
-    public RefeicaoAdapter(Context context, List<RefeicaoEntity> data, OnItemClickListener listener) {
+    public RefeicaoAdapter(Context context, List<Refeicao> data, OnItemClickListener listener) {
         this.inflater = LayoutInflater.from(context);
         this.refeicoes = data;
         this.listener = listener;
@@ -51,9 +51,9 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
             txtHorario = view.findViewById(R.id.txt_horario_refeicao);
         }
 
-        public void bind(final RefeicaoEntity refeicao, final OnItemClickListener listener) {
-            txtTitulo.setText(refeicao.getTitulo());
-            txtHorario.setText(refeicao.getHorario());
+        public void bind(final Refeicao refeicao, final OnItemClickListener listener) {
+            txtTitulo.setText(refeicao.getRefeicao().getTitulo());
+            txtHorario.setText(refeicao.getRefeicao().getHorario());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -66,6 +66,6 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
     }
 
     public interface OnItemClickListener {
-        void onItemClick(RefeicaoEntity item);
+        void onItemClick(Refeicao item);
     }
 }

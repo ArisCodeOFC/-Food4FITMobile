@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity
+@Entity(tableName = "tbl_refeicao")
 public class RefeicaoEntity implements Serializable {
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
     private int id;
