@@ -16,10 +16,10 @@ import java.util.List;
 
 import br.com.food4fit.food4fit.adapter.DietaAdapter;
 import br.com.food4fit.food4fit.config.AppDatabase;
-import br.com.food4fit.food4fit.model.DietaEntity;
+import br.com.food4fit.food4fit.model.Dieta;
 
 public class DietasFragment extends Fragment {
-    private List<DietaEntity> dietas = new ArrayList<>();
+    private List<Dieta> dietas = new ArrayList<>();
     private DietaAdapter adapter;
 
     @Override
@@ -32,7 +32,7 @@ public class DietasFragment extends Fragment {
 
         adapter = new DietaAdapter(getContext(), dietas, new DietaAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(DietaEntity item) {
+            public void onItemClick(Dieta item) {
                 DietaDialogFragment dialog = new DietaDialogFragment();
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("dieta", item);

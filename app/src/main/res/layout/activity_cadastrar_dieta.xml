@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.food4fit.food4fit.CadastrarDietaActivity"
-    tools:showIn="@layout/activity_cadastrar_dieta">
+    tools:context="br.com.food4fit.food4fit.CadastrarDietaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +33,10 @@
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:lines="5"
+                android:maxLines="5"
+                android:gravity="top"
                 android:id="@+id/edt_dieta_descricao"
                 android:hint="Descrição" />
         </android.support.design.widget.TextInputLayout>

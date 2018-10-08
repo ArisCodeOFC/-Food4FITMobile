@@ -25,8 +25,8 @@ public class CadastrarDietaActivity extends AppCompatActivity {
         edtTitulo = findViewById(R.id.edt_dieta_titulo);
         edtDescricao = findViewById(R.id.edt_dieta_descricao);
         edtMeta = findViewById(R.id.edt_dieta_meta);
-        Button btnSalvar = findViewById(R.id.btn_dieta_salvar);
 
+        Button btnSalvar = findViewById(R.id.btn_dieta_salvar);
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

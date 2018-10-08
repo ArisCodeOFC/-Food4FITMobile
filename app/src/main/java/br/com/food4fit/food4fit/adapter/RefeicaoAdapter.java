@@ -42,15 +42,18 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtTitulo;
         private TextView txtCalorias;
+        private TextView txtHorario;
 
         public ViewHolder(View view) {
             super(view);
             txtTitulo = view.findViewById(R.id.txt_titulo_refeicao);
             txtCalorias = view.findViewById(R.id.txt_calorias_refeicao);
+            txtHorario = view.findViewById(R.id.txt_horario_refeicao);
         }
 
         public void bind(final RefeicaoEntity refeicao, final OnItemClickListener listener) {
             txtTitulo.setText(refeicao.getTitulo());
+            txtHorario.setText(refeicao.getHorario());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

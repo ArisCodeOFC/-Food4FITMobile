@@ -16,4 +16,7 @@ public interface DietaDAO {
 
     @Query("SELECT * FROM tbl_dieta")
     List<Dieta> selectAll();
+
+    @Query("SELECT * FROM tbl_dieta WHERE id = :id")
+    Dieta select(int id);
 }

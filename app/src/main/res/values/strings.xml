@@ -10,4 +10,5 @@
 
     <string name="title_activity_cadastrar_dieta">Cadastrar Dieta</string>
     <string name="title_activity_dieta">DietaActivity</string>
+    <string name="title_activity_cadastrar_refeicao">Cadastrar Refeição</string>
 </resources>

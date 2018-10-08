@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import br.com.food4fit.food4fit.model.DietaEntity;
+import br.com.food4fit.food4fit.model.Dieta;
 
 public class DietaDialogFragment extends BottomSheetDialogFragment {
-    private DietaEntity dieta;
+    private Dieta dieta;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
 
     @Override
     public void setArguments(Bundle args) {
-        dieta = (DietaEntity) args.getSerializable("dieta");
+        dieta = (Dieta) args.getSerializable("dieta");
     }
 
     @Nullable
@@ -29,7 +29,7 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_dieta, container, false);
         TextView txtTitulo = view.findViewById(R.id.txt_dialog_dieta_titulo);
-        txtTitulo.setText(dieta.getTitulo());
+        txtTitulo.setText(dieta.getDieta().getTitulo());
 
         TextView txtRefeicoes = view.findViewById(R.id.txt_dieta_refeicoes);
         txtRefeicoes.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +38,7 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
                 Intent intent = new Intent(getActivity(), DietaActivity.class);
                 intent.putExtra("dieta", dieta);
                 startActivity(intent);
+                dismiss();
             }
         });
 
