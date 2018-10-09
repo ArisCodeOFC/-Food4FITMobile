@@ -2,11 +2,12 @@ package br.com.food4fit.food4fit;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import java.util.List;
 
@@ -32,13 +33,16 @@ public class RefeicaoActivity extends AppCompatActivity {
         }
 
         RecyclerView rvAlimentos = findViewById(R.id.rv_alimentos);
-        rvAlimentos.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-        rvAlimentos.setLayoutManager(new LinearLayoutManager(this));
+        rvAlimentos.setLayoutManager(new GridLayoutManager(this, 2));
 
         List<Alimento> alimentos = refeicao.getAlimentos();
         Alimento a = new Alimento();
         a.setId(1);
         a.setTitulo("kkk");
+        alimentos.add(a);
+        alimentos.add(a);
+        alimentos.add(a);
+        alimentos.add(a);
         alimentos.add(a);
 
         AlimentoAdapter adapter = new AlimentoAdapter(this, alimentos, new AlimentoAdapter.OnItemClickListener() {
@@ -49,5 +53,15 @@ public class RefeicaoActivity extends AppCompatActivity {
         });
 
         rvAlimentos.setAdapter(adapter);
+
+        FloatingActionButton fabCadastrarAlimento = findViewById(R.id.fab_cadastrar_alimento);
+        fabCadastrarAlimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RefeicaoActivity.this, CadastrarAlimentoActivity.class);
+                intent.putExtra("refeicao", refeicao);
+                startActivity(intent);
+            }
+        });
     }
 }

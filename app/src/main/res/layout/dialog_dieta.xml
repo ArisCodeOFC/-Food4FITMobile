@@ -35,14 +35,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Tornar Ativa"
+                android:text="Refeições"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif"
                 android:focusable="true"
                 android:clickable="true"
                 android:textColor="#ffffff"
+                android:id="@+id/txt_dieta_refeicoes"
                 android:background="?selectableItemBackgroundBorderless"
-                android:drawableTop="@drawable/baseline_check_24" />
+                android:drawableTop="@drawable/baseline_room_service_white_48" />
         </LinearLayout>
 
         <LinearLayout
@@ -55,15 +56,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Refeições"
+                android:text="Tornar Ativa"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif"
                 android:focusable="true"
                 android:clickable="true"
                 android:textColor="#ffffff"
-                android:id="@+id/txt_dieta_refeicoes"
                 android:background="?selectableItemBackgroundBorderless"
-                android:drawableTop="@drawable/baseline_room_service_white_48" />
+                android:drawableTop="@drawable/baseline_check_24" />
         </LinearLayout>
     </LinearLayout>
 
@@ -91,7 +91,6 @@
                 android:textColor="#ffffff"
                 android:background="?selectableItemBackgroundBorderless"
                 android:drawableTop="@drawable/baseline_share_24_white" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -112,7 +111,6 @@
                 android:textColor="#ffffff"
                 android:background="?selectableItemBackgroundBorderless"
                 android:drawableTop="@drawable/baseline_create_24_white" />
-
         </LinearLayout>
 
         <LinearLayout

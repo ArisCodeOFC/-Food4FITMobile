@@ -9,7 +9,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_dietas"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_dieta" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_cadastrar_dieta"
