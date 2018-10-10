@@ -1,20 +1,35 @@
 package br.com.food4fit.food4fit;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.listeners.IPickResult;
 
+import java.io.IOException;
+
+import br.com.food4fit.food4fit.config.RetrofitConfig;
+import br.com.food4fit.food4fit.model.UnidadeMedida;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class CadastrarAlimentoActivity extends AppCompatActivity implements IPickResult {
     private ImageView imgAlimento;
+    private String[] unidadesMedida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +54,51 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                 ).show(CadastrarAlimentoActivity.this);
             }
         });
+
+        new RetrofitConfig().getUnidadeMedidaService().listar().enqueue(new Callback<UnidadeMedida[]>() {
+            @Override
+            public void onResponse(Call<UnidadeMedida[]> call, Response<UnidadeMedida[]> response) {
+                try {
+                    ObjectMapper mapper = new ObjectMapper();
+                    String json = mapper.writeValueAsString(response.body());
+                    PreferenceManager.getDefaultSharedPreferences(CadastrarAlimentoActivity.this).edit().putString("unidades_medida", json).apply();
+                    preencherUnidades(response.body());
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UnidadeMedida[]> call, Throwable throwable) {
+                throwable.printStackTrace();
+                try {
+                    String json = PreferenceManager.getDefaultSharedPreferences(CadastrarAlimentoActivity.this).getString("unidades_medida", "");
+                    ObjectMapper mapper = new ObjectMapper();
+                    UnidadeMedida[] unidades = mapper.readValue(json, UnidadeMedida[].class);
+                    preencherUnidades(unidades);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        TextInputEditText edtUnidadeMedida = findViewById(R.id.edt_alimento_unidade);
+        edtUnidadeMedida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder adb = new AlertDialog.Builder(CadastrarAlimentoActivity.this);
+                adb.setSingleChoiceItems(unidadesMedida, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface d, int n) {
+
+                    }
+                });
+
+                adb.setNegativeButton("Cancelar", null);
+                adb.setTitle("Escolha uma unidade");
+                adb.show();
+            }
+        });
     }
 
     @Override
@@ -52,6 +112,13 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
             } else {
                 imgAlimento.setImageBitmap(bitmap);
             }
+        }
+    }
+
+    private void preencherUnidades(UnidadeMedida[] unidades) {
+        unidadesMedida = new String[unidades.length];
+        for (int i = 0; i < unidadesMedida.length; i++) {
+            unidadesMedida[i] = unidades[i].getUnidadeMedida() + " (" + unidades[i].getSigla() + ")";
         }
     }
 }
