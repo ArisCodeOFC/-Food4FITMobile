@@ -29,7 +29,8 @@ import retrofit2.Response;
 
 public class CadastrarAlimentoActivity extends AppCompatActivity implements IPickResult {
     private ImageView imgAlimento;
-    private String[] unidadesMedida;
+    private UnidadeMedida[] unidadesMedida;
+    private String[] unidadesMedidaString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,15 +83,15 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
             }
         });
 
-        TextInputEditText edtUnidadeMedida = findViewById(R.id.edt_alimento_unidade);
+        final TextInputEditText edtUnidadeMedida = findViewById(R.id.edt_alimento_unidade);
         edtUnidadeMedida.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder adb = new AlertDialog.Builder(CadastrarAlimentoActivity.this);
-                adb.setSingleChoiceItems(unidadesMedida, 0, new DialogInterface.OnClickListener() {
+                adb.setSingleChoiceItems(unidadesMedidaString, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface d, int n) {
-
+                        edtUnidadeMedida.setText(unidadesMedida[n].getSigla());
                     }
                 });
 
@@ -116,9 +117,11 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
     }
 
     private void preencherUnidades(UnidadeMedida[] unidades) {
-        unidadesMedida = new String[unidades.length];
-        for (int i = 0; i < unidadesMedida.length; i++) {
-            unidadesMedida[i] = unidades[i].getUnidadeMedida() + " (" + unidades[i].getSigla() + ")";
+        unidadesMedidaString = new String[unidades.length];
+        for (int i = 0; i < unidadesMedidaString.length; i++) {
+            unidadesMedidaString[i] = unidades[i].getUnidadeMedida() + " (" + unidades[i].getSigla() + ")";
         }
+
+        unidadesMedida = unidades;
     }
 }
