@@ -10,18 +10,16 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
     @ColumnInfo(name = "id") @PrimaryKey
     private int id;
-
     @ColumnInfo(name = "nome")
     private String nome;
-
     @ColumnInfo(name = "sobrenome")
     private String sobrenome;
-
     @ColumnInfo(name = "email")
     private String email;
-
     @ColumnInfo(name = "hash")
     private String hash;
+    @ColumnInfo(name = "login")
+    private boolean login;
 
     public int getId() {
         return id;
@@ -61,5 +59,13 @@ public class Usuario implements Serializable {
 
     public void setHash(String hash) {
         this.hash = hash;
+    }
+
+    public boolean isLogin() {
+        return login;
+    }
+
+    public void setLogin(boolean login) {
+        this.login = login;
     }
 }

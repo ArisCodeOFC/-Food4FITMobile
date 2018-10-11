@@ -2,7 +2,6 @@ package br.com.food4fit.food4fit;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -104,15 +103,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         new AlertDialog.Builder(this)
             .setMessage("Você realmente deseja sair de sua conta?")
             .setCancelable(false)
-            .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    Account[] accounts = accountManager.getAccountsByType("FOOD4FIT");
-                    if (accounts.length > 0) {
-                        AppDatabase.getDatabase(MainActivity.this).getUsuarioDAO().delete(usuario.getId());
-                        accountManager.removeAccount(accounts[0], null, null);
-                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                        finish();
-                    }
+            .setPositiveButton("Sim", (dialog, id) -> {
+                Account[] accounts = accountManager.getAccountsByType("FOOD4FIT");
+                if (accounts.length > 0) {
+                    AppDatabase.getDatabase(MainActivity.this).getUsuarioDAO().logout(usuario.getId());
+                    accountManager.removeAccount(accounts[0], null, null);
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    finish();
                 }
             })
             .setNegativeButton("Não", null)

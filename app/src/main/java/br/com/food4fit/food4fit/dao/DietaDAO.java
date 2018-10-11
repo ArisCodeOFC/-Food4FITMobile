@@ -14,8 +14,8 @@ public interface DietaDAO {
     @Insert
     void insert(DietaEntity dieta);
 
-    @Query("SELECT * FROM tbl_dieta")
-    List<Dieta> selectAll();
+    @Query("SELECT * FROM tbl_dieta WHERE id_usuario = :idUsuario")
+    List<Dieta> selectAll(int idUsuario);
 
     @Query("SELECT * FROM tbl_dieta WHERE id = :id")
     Dieta select(int id);

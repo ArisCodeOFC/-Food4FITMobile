@@ -3,11 +3,11 @@ package br.com.food4fit.food4fit;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import br.com.food4fit.food4fit.config.AppDatabase;
+import br.com.food4fit.food4fit.config.ApplicationData;
 import br.com.food4fit.food4fit.model.DietaEntity;
 
 public class CadastrarDietaActivity extends AppCompatActivity {
@@ -27,12 +27,7 @@ public class CadastrarDietaActivity extends AppCompatActivity {
         edtMeta = findViewById(R.id.edt_dieta_meta);
 
         Button btnSalvar = findViewById(R.id.btn_dieta_salvar);
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                salvarDieta();
-            }
-        });
+        btnSalvar.setOnClickListener(view -> salvarDieta());
     }
 
     private void salvarDieta() {
@@ -54,6 +49,7 @@ public class CadastrarDietaActivity extends AppCompatActivity {
             dieta.setTitulo(titulo);
             dieta.setDescricao(descricao);
             dieta.setMeta(Double.parseDouble(meta));
+            dieta.setIdUsuario(((ApplicationData) getApplication()).getUsuario().getId());
             AppDatabase.getDatabase(this).getDietaDAO().insert(dieta);
             finish();
         }

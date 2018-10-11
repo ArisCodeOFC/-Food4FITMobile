@@ -13,7 +13,7 @@ import br.com.food4fit.food4fit.model.DietaEntity;
 import br.com.food4fit.food4fit.model.RefeicaoEntity;
 import br.com.food4fit.food4fit.model.Usuario;
 
-@Database(entities = {Usuario.class, DietaEntity.class, RefeicaoEntity.class, Alimento.class}, version = 6)
+@Database(entities = {Usuario.class, DietaEntity.class, RefeicaoEntity.class, Alimento.class}, version = 7)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 

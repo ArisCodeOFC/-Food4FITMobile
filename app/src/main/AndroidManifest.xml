@@ -13,6 +13,7 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".config.ApplicationData"
         android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
