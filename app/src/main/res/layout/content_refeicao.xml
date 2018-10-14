@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
+            android:id="@+id/txt_calorias_visualizar_refeicao"
             android:text="0,00kcal" />
 
         <TextView
@@ -29,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
+            android:id="@+id/txt_carboidratos_visualizar_refeicao"
             android:text="0,00g carb" />
 
         <TextView
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
+            android:id="@+id/txt_gorduras_visualizar_refeicao"
             android:text="0,00g gord" />
 
         <TextView
@@ -43,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center"
+            android:id="@+id/txt_proteinas_visualizar_refeicao"
             android:text="0,00g prot" />
     </LinearLayout>
 

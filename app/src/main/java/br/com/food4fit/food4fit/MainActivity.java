@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
         txtDrawerNome.setText(usuario.getNome() + " " + usuario.getSobrenome());
         txtDrawerEmail.setText(usuario.getEmail());
+
+        ((Food4fitApp) getApplication()).sincronizarImagens();
     }
 
     @Override

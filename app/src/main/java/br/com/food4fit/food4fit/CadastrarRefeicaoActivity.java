@@ -5,22 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TimePicker;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 import br.com.food4fit.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.model.Dieta;
+import br.com.food4fit.food4fit.model.Refeicao;
 import br.com.food4fit.food4fit.model.RefeicaoEntity;
 
 public class CadastrarRefeicaoActivity extends AppCompatActivity {
-    private TextInputEditText edtTitulo;
-    private TextInputEditText edtDescricao;
-    private TextInputEditText edtHorario;
+    private TextInputEditText edtTitulo, edtDescricao, edtHorario;
     private Dieta dieta;
+    private Refeicao refeicao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,38 +28,33 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
         setFinishOnTouchOutside(false);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            dieta = (Dieta) intent.getSerializableExtra("dieta");
-        }
-
         edtTitulo = findViewById(R.id.edt_refeicao_titulo);
         edtDescricao = findViewById(R.id.edt_refeicao_descricao);
         edtHorario = findViewById(R.id.edt_refeicao_horario);
-        edtHorario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                TimePickerDialog timePicker = new TimePickerDialog(CadastrarRefeicaoActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        edtHorario.setText(String.format("%02d:%02d", selectedHour, selectedMinute));
-                    }
 
-                }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
-
-                timePicker.setTitle("Selecione um horário");
-                timePicker.show();
+        Intent intent = getIntent();
+        if (intent != null) {
+            dieta = (Dieta) intent.getSerializableExtra("dieta");
+            refeicao = (Refeicao) intent.getSerializableExtra("refeicao");
+            if (refeicao != null) {
+                edtTitulo.setText(refeicao.getData().getTitulo());
+                edtDescricao.setText(refeicao.getData().getDescricao());
+                edtHorario.setText(refeicao.getData().getHorario());
             }
+        }
+
+        edtHorario.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            TimePickerDialog timePicker = new TimePickerDialog(CadastrarRefeicaoActivity.this,
+                    (timePicker1, selectedHour, selectedMinute) -> edtHorario.setText(String.format(new Locale("pt","BR"), "%02d:%02d", selectedHour, selectedMinute)),
+                    calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
+
+            timePicker.setTitle("Selecione um horário");
+            timePicker.show();
         });
 
         Button btnSalvar = findViewById(R.id.btn_refeicao_salvar);
-        btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                salvarRefeicao();
-            }
-        });
+        btnSalvar.setOnClickListener(view -> salvarRefeicao());
     }
 
     private void salvarRefeicao() {
@@ -82,8 +76,14 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
             refeicao.setTitulo(titulo);
             refeicao.setDescricao(descricao);
             refeicao.setHorario(horario);
-            refeicao.setIdDieta(dieta.getDieta().getId());
-            AppDatabase.getDatabase(this).getRefeicaoDAO().insert(refeicao);
+            refeicao.setIdDieta(dieta.getData().getId());
+            if (this.refeicao != null) {
+                refeicao.setId(this.refeicao.getData().getId());
+                AppDatabase.getDatabase(this).getRefeicaoDAO().update(refeicao);
+            } else {
+                AppDatabase.getDatabase(this).getRefeicaoDAO().insert(refeicao);
+            }
+
             finish();
         }
     }

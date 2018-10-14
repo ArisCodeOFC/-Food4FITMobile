@@ -8,19 +8,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.food4fit.model.Refeicao;
 
 public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHolder> {
-    private final List<Refeicao> refeicoes;
     private final LayoutInflater inflater;
-    private OnItemClickListener listener;
+    private final List<Refeicao> list;
 
-    public RefeicaoAdapter(Context context, List<Refeicao> data, OnItemClickListener listener) {
+    public RefeicaoAdapter(Context context, List<Refeicao> list) {
         this.inflater = LayoutInflater.from(context);
-        this.refeicoes = data;
-        this.listener = listener;
+        this.list = list;
     }
 
     @Override
@@ -31,18 +30,16 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(refeicoes.get(position), listener);
+        holder.bind(list.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return refeicoes.size();
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtTitulo;
-        private TextView txtCalorias;
-        private TextView txtHorario;
+        private TextView txtTitulo, txtCalorias, txtHorario;
 
         public ViewHolder(View view) {
             super(view);
@@ -51,21 +48,10 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
             txtHorario = view.findViewById(R.id.txt_horario_refeicao);
         }
 
-        public void bind(final Refeicao refeicao, final OnItemClickListener listener) {
-            txtTitulo.setText(refeicao.getRefeicao().getTitulo());
-            txtHorario.setText(refeicao.getRefeicao().getHorario());
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        listener.onItemClick(refeicao);
-                    }
-                }
-            });
+        public void bind(Refeicao refeicao) {
+            txtTitulo.setText(refeicao.getData().getTitulo());
+            txtCalorias.setText(String.format(new Locale("pt","BR"), "%.2fkcal", refeicao.getCalorias()));
+            txtHorario.setText(refeicao.getData().getHorario());
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(Refeicao item);
     }
 }

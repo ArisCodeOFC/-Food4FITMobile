@@ -3,16 +3,19 @@ package br.com.food4fit.food4fit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import br.com.food4fit.food4fit.adapter.ItemClickSupport;
 import br.com.food4fit.food4fit.adapter.RefeicaoAdapter;
 import br.com.food4fit.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.model.Dieta;
@@ -22,6 +25,7 @@ public class DietaActivity extends AppCompatActivity {
     private Dieta dieta;
     private RefeicaoAdapter adapter;
     private List<Refeicao> refeicoes = new ArrayList<>();
+    private TextView txtCalorias, txtCarboidratos, txtGorduras, txtProteinas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,46 +33,100 @@ public class DietaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dieta);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         Intent intent = getIntent();
         if (intent != null) {
             dieta = (Dieta) intent.getSerializableExtra("dieta");
-            setTitle(dieta.getDieta().getTitulo());
+            setTitle(dieta.getData().getTitulo());
         }
 
         RecyclerView rvRefeicoes = findViewById(R.id.rv_refeicoes);
         rvRefeicoes.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvRefeicoes.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new RefeicaoAdapter(this, refeicoes, new RefeicaoAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Refeicao item) {
-                Intent intent = new Intent(DietaActivity.this, RefeicaoActivity.class);
-                intent.putExtra("refeicao", item);
-                startActivity(intent);
-            }
-        });
+        adapter = new RefeicaoAdapter(this, refeicoes);
+        ItemClickSupport.addTo(rvRefeicoes)
+                .setOnItemClickListener((recyclerView, position, v) -> {
+                    Intent intentRefeicao = new Intent(DietaActivity.this, RefeicaoActivity.class);
+                    intentRefeicao.putExtra("refeicao", refeicoes.get(position));
+                    startActivity(intentRefeicao);
+                })
+                .setOnItemLongClickListener((recyclerView, position, v) -> {
+                    Refeicao refeicao = refeicoes.get(position);
+                    RefeicaoDialogFragment dialog = new RefeicaoDialogFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("refeicao", refeicao);
+                    dialog.setArguments(bundle);
+                    dialog.setListenerExcluir(view -> {
+                        dialog.dismiss();
+                        excluirRefeicao(refeicao);
+                    });
+
+                    dialog.setListenerEditar(view -> {
+                        dialog.dismiss();
+                        editarRefeicao(refeicao);
+                    });
+
+                    dialog.show(getSupportFragmentManager(), "dialog");
+                    return false;
+                });
 
         rvRefeicoes.setAdapter(adapter);
 
         FloatingActionButton fabCadastrarRefeicao = findViewById(R.id.fab_cadastrar_refeicao);
-        fabCadastrarRefeicao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DietaActivity.this, CadastrarRefeicaoActivity.class);
-                intent.putExtra("dieta", dieta);
-                startActivity(intent);
-            }
+        fabCadastrarRefeicao.setOnClickListener(view -> {
+            Intent intentCadastrar = new Intent(DietaActivity.this, CadastrarRefeicaoActivity.class);
+            intentCadastrar.putExtra("dieta", dieta);
+            startActivity(intentCadastrar);
         });
+
+        txtCalorias = findViewById(R.id.txt_calorias_visualizar_dieta);
+        txtCarboidratos = findViewById(R.id.txt_carboidratos_visualizar_dieta);
+        txtGorduras = findViewById(R.id.txt_gorduras_visualizar_dieta);
+        txtProteinas = findViewById(R.id.txt_proteinas_visualizar_dieta);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        dieta = AppDatabase.getDatabase(this).getDietaDAO().select(dieta.getDieta().getId());
+        dieta = AppDatabase.getDatabase(this).getDietaDAO().select(dieta.getData().getId());
         refeicoes.clear();
         refeicoes.addAll(dieta.getRefeicoes());
         adapter.notifyDataSetChanged();
+        atualizarDados();
+    }
+
+    private void atualizarDados() {
+        dieta.setDadosAtualizados(false);
+        txtCalorias.setText(String.format(new Locale("pt","BR"), "%.2fkcal", dieta.getCalorias()));
+        txtCarboidratos.setText(String.format(new Locale("pt","BR"), "%.2fg carb", dieta.getCarboidratos()));
+        txtGorduras.setText(String.format(new Locale("pt","BR"), "%.2fg gord", dieta.getGorduras()));
+        txtProteinas.setText(String.format(new Locale("pt","BR"), "%.2fg prot", dieta.getProteinas()));
+    }
+
+    private void excluirRefeicao(Refeicao refeicao) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Excluir");
+        builder.setMessage("Tem certeza que deseja excluir esta refeição e todos os seus alimentos?");
+        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            adapter.notifyItemRemoved(refeicoes.indexOf(refeicao));
+            refeicoes.remove(refeicao);
+            dieta.getRefeicoes().remove(refeicao);
+            AppDatabase.getDatabase(this).getRefeicaoDAO().delete(refeicao.getData());
+            atualizarDados();
+        });
+
+        builder.setNegativeButton("Não", null);
+        builder.create().show();
+    }
+
+    private void editarRefeicao(Refeicao refeicao) {
+        Intent intent = new Intent(DietaActivity.this, CadastrarRefeicaoActivity.class);
+        intent.putExtra("dieta", dieta);
+        intent.putExtra("refeicao", refeicao);
+        startActivity(intent);
     }
 }

@@ -23,31 +23,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Refeições"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif"
-                android:focusable="true"
-                android:clickable="true"
-                android:textColor="#ffffff"
-                android:id="@+id/txt_dieta_refeicoes"
-                android:background="?selectableItemBackgroundBorderless"
-                android:drawableTop="@drawable/baseline_room_service_white_48" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal">
@@ -65,16 +45,9 @@
                 android:background="?selectableItemBackgroundBorderless"
                 android:drawableTop="@drawable/baseline_check_24" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="25dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal">
@@ -94,7 +67,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal">
@@ -110,11 +83,12 @@
                 android:clickable="true"
                 android:textColor="#ffffff"
                 android:background="?selectableItemBackgroundBorderless"
+                android:id="@+id/txt_dialog_dieta_editar"
                 android:drawableTop="@drawable/baseline_create_24_white" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal">
@@ -130,6 +104,7 @@
                 android:clickable="true"
                 android:textColor="#ffffff"
                 android:background="?selectableItemBackgroundBorderless"
+                android:id="@+id/txt_dialog_dieta_excluir"
                 android:drawableTop="@drawable/baseline_clear_24" />
         </LinearLayout>
     </LinearLayout>

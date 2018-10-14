@@ -19,10 +19,8 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private AccountManager accountManager;
-    private TextInputLayout tilEmail;
-    private TextInputEditText edtEmail;
-    private TextInputLayout tilSenha;
-    private TextInputEditText edtSenha;
+    private TextInputLayout tilEmail, tilSenha;
+    private TextInputEditText edtEmail, edtSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
