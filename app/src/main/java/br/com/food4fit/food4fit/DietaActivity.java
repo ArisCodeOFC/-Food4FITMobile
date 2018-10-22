@@ -9,6 +9,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,7 +42,6 @@ public class DietaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             dieta = (Dieta) intent.getSerializableExtra("dieta");
-            setTitle(dieta.getData().getTitulo());
         }
 
         RecyclerView rvRefeicoes = findViewById(R.id.rv_refeicoes);
@@ -51,6 +52,7 @@ public class DietaActivity extends AppCompatActivity {
         ItemClickSupport.addTo(rvRefeicoes)
                 .setOnItemClickListener((recyclerView, position, v) -> {
                     Intent intentRefeicao = new Intent(DietaActivity.this, RefeicaoActivity.class);
+                    intentRefeicao.putExtra("dieta", dieta);
                     intentRefeicao.putExtra("refeicao", refeicoes.get(position));
                     startActivity(intentRefeicao);
                 })
@@ -92,11 +94,32 @@ public class DietaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         dieta = AppDatabase.getDatabase(this).getDietaDAO().select(dieta.getData().getId());
+        setTitle(dieta.getData().getTitulo());
+
         refeicoes.clear();
         refeicoes.addAll(dieta.getRefeicoes());
         adapter.notifyDataSetChanged();
         atualizarDados();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_dieta, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.item_dieta_excluir) {
+            excluirDieta();
+        } else if (id == R.id.item_dieta_editar) {
+            editarDieta();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void atualizarDados() {
@@ -127,6 +150,25 @@ public class DietaActivity extends AppCompatActivity {
         Intent intent = new Intent(DietaActivity.this, CadastrarRefeicaoActivity.class);
         intent.putExtra("dieta", dieta);
         intent.putExtra("refeicao", refeicao);
+        startActivity(intent);
+    }
+
+    private void excluirDieta() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Excluir");
+        builder.setMessage("Tem certeza que deseja excluir esta dieta e todas as suas refeições?");
+        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            AppDatabase.getDatabase(this).getDietaDAO().delete(dieta.getData());
+            finish();
+        });
+
+        builder.setNegativeButton("Não", null);
+        builder.create().show();
+    }
+
+    private void editarDieta() {
+        Intent intent = new Intent(this, CadastrarDietaActivity.class);
+        intent.putExtra("dieta", dieta);
         startActivity(intent);
     }
 }

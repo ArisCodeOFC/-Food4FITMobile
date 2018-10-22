@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,9 +20,11 @@ import br.com.food4fit.food4fit.adapter.AlimentoAdapter;
 import br.com.food4fit.food4fit.adapter.ItemClickSupport;
 import br.com.food4fit.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.model.Alimento;
+import br.com.food4fit.food4fit.model.Dieta;
 import br.com.food4fit.food4fit.model.Refeicao;
 
 public class RefeicaoActivity extends AppCompatActivity {
+    private Dieta dieta;
     private Refeicao refeicao;
     private List<Alimento> alimentos = new ArrayList<>();
     private AlimentoAdapter adapter;
@@ -38,8 +42,8 @@ public class RefeicaoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
+            dieta = (Dieta) intent.getSerializableExtra("dieta");
             refeicao = (Refeicao) intent.getSerializableExtra("refeicao");
-            setTitle(refeicao.getData().getTitulo());
         }
 
         RecyclerView rvAlimentos = findViewById(R.id.rv_alimentos);
@@ -83,11 +87,32 @@ public class RefeicaoActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         refeicao = AppDatabase.getDatabase(this).getRefeicaoDAO().select(refeicao.getData().getId());
+        setTitle(refeicao.getData().getTitulo());
+
         alimentos.clear();
         alimentos.addAll(refeicao.getAlimentos());
         adapter.notifyDataSetChanged();
         atualizarDados();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_refeicao, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.item_refeicao_excluir) {
+            excluirRefeicao();
+        } else if (id == R.id.item_refeica_editar) {
+            editarRefeicao();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void atualizarDados() {
@@ -118,6 +143,26 @@ public class RefeicaoActivity extends AppCompatActivity {
         Intent intent = new Intent(RefeicaoActivity.this, CadastrarAlimentoActivity.class);
         intent.putExtra("refeicao", refeicao);
         intent.putExtra("alimento", alimento);
+        startActivity(intent);
+    }
+
+    private void excluirRefeicao() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Excluir");
+        builder.setMessage("Tem certeza que deseja excluir esta refeição e todos os seus alimentos?");
+        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            AppDatabase.getDatabase(this).getRefeicaoDAO().delete(refeicao.getData());
+            finish();
+        });
+
+        builder.setNegativeButton("Não", null);
+        builder.create().show();
+    }
+
+    private void editarRefeicao() {
+        Intent intent = new Intent(this, CadastrarRefeicaoActivity.class);
+        intent.putExtra("dieta", dieta);
+        intent.putExtra("refeicao", refeicao);
         startActivity(intent);
     }
 }

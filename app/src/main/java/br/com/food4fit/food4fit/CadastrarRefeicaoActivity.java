@@ -40,6 +40,7 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
                 edtTitulo.setText(refeicao.getData().getTitulo());
                 edtDescricao.setText(refeicao.getData().getDescricao());
                 edtHorario.setText(refeicao.getData().getHorario());
+                setTitle("Editar Refeição");
             }
         }
 

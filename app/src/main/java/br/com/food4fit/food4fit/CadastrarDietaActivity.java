@@ -33,6 +33,7 @@ public class CadastrarDietaActivity extends AppCompatActivity {
                 edtTitulo.setText(dieta.getData().getTitulo());
                 edtDescricao.setText(dieta.getData().getDescricao());
                 edtMeta.setText(String.valueOf(dieta.getData().getMeta()));
+                setTitle("Editar Dieta");
             }
         }
 

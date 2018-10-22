@@ -1,6 +1,6 @@
 package br.com.food4fit.food4fit;
 
-import android.app.ProgressDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -40,6 +40,7 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
     private EditText edtTitulo, edtPorcao, edtUnidadeMedida, edtCalorias, edtCarboidratos, edtProteinas, edtGorduras;
     private Refeicao refeicao;
     private Alimento alimento;
+    private int unidadeSelecionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,8 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
 
         edtUnidadeMedida.setOnClickListener(view -> {
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
-            adb.setSingleChoiceItems(unidadesMedidaString, 0, (dialog, selected) -> {
+            adb.setSingleChoiceItems(unidadesMedidaString, unidadeSelecionada, (dialog, selected) -> {
+                unidadeSelecionada = selected;
                 edtUnidadeMedida.setText(unidadesMedida[selected].getSigla());
                 dialog.dismiss();
             });
@@ -187,21 +189,28 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                 imgBitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
                 byte[] imageData = stream.toByteArray();
 
-                ProgressDialog dialog = new ProgressDialog(this);
-                dialog.setMessage("Processando imagem...");
-                dialog.setIndeterminate(false);
-                dialog.setMax(100);
-                dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                dialog.setCancelable(false);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setView(R.layout.progress_dialog);
+                builder.setCancelable(false);
+                Dialog dialog = builder.create();
                 dialog.show();
 
                 if (!(((Food4fitApp) getApplication()).isNetworkAvailable())) {
                     salvarImagemArquivo(caminhoImagem, imageData);
                     alimento.setImagem(caminhoImagem);
+                    dialog.dismiss();
                     finalizarCadastro(alimento);
                 } else {
                     imageRef.putBytes(imageData)
-                            .addOnProgressListener(taskSnapshot -> dialog.setProgress((int) ((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount())))
+                            .addOnFailureListener(e -> {
+                                e.printStackTrace();
+                                dialog.dismiss();
+                                Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnCanceledListener(() -> {
+                                dialog.dismiss();
+                                Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
+                            })
                             .addOnCompleteListener(task -> {
                                 if (task.isComplete()) {
                                     if (task.isSuccessful()) {
@@ -209,6 +218,10 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                                             alimento.setImagem(uri.toString());
                                             dialog.dismiss();
                                             finalizarCadastro(alimento);
+                                        }).addOnFailureListener(e -> {
+                                            e.printStackTrace();
+                                            dialog.dismiss();
+                                            Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
                                         });
 
                                     } else {
@@ -217,6 +230,10 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                                         dialog.dismiss();
                                         finalizarCadastro(alimento);
                                     }
+
+                                } else {
+                                    dialog.dismiss();
+                                    Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
                                 }
                             });
                 }

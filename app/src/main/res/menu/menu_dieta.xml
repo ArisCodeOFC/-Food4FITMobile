@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Tornar Ativa"
+        app:showAsAction="never"
+        android:id="@+id/item_dieta_tornar_ativa" />
+
+    <item android:title="Editar"
+        app:showAsAction="never"
+        android:id="@+id/item_dieta_editar" />
+
+    <item android:title="Excluir"
+        app:showAsAction="never"
+        android:id="@+id/item_dieta_excluir" />
+
+    <item android:title="Compartilhar"
+        app:showAsAction="never"
+        android:id="@+id/item_dieta_compartilhar" />
+</menu>
