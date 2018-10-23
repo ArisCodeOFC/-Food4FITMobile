@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="br.com.food4fit.food4fit.CadastrarRefeicaoActivity">
+    tools:context="br.com.food4fit.CadastrarRefeicaoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

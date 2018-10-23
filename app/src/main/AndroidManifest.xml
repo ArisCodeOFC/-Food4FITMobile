@@ -10,11 +10,11 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="br.com.food4fit.Food4fitApp"
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:name=".Food4fitApp"
         android:theme="@style/AppTheme">
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -26,8 +26,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/picker_provider_paths" />
         </provider>
+
         <service
-            android:name=".account.AuthenticatorService"
+            android:name="br.com.food4fit.account.AuthenticatorService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -38,8 +39,9 @@
                 android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/authenticator" />
         </service>
+
         <activity
-            android:name=".LoginActivity"
+            android:name="br.com.food4fit.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -49,56 +51,58 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="br.com.food4fit.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_main"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CadastrarDietaActivity"
+            android:name="br.com.food4fit.CadastrarDietaActivity"
             android:excludeFromRecents="true"
             android:label="@string/title_activity_cadastrar_dieta"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="br.com.food4fit.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.food4fit.food4fit.MainActivity" />
+                android:value="br.com.food4fit.MainActivity" />
         </activity>
         <activity
-            android:name=".DietaActivity"
+            android:name="br.com.food4fit.DietaActivity"
             android:label="@string/title_activity_dieta"
             android:launchMode="singleTop"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="br.com.food4fit.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.food4fit.food4fit.MainActivity" />
+                android:value="br.com.food4fit.MainActivity" />
         </activity>
         <activity
-            android:name=".CadastrarRefeicaoActivity"
+            android:name="br.com.food4fit.CadastrarRefeicaoActivity"
             android:excludeFromRecents="true"
             android:label="@string/title_activity_cadastrar_refeicao"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="br.com.food4fit.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.food4fit.food4fit.MainActivity" />
+                android:value="br.com.food4fit.MainActivity" />
         </activity>
         <activity
-            android:name=".RefeicaoActivity"
+            android:name="br.com.food4fit.RefeicaoActivity"
             android:label="@string/title_activity_refeicao"
-            android:parentActivityName=".DietaActivity"
+            android:parentActivityName="br.com.food4fit.DietaActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.food4fit.food4fit.DietaActivity" />
+                android:value="br.com.food4fit.DietaActivity" />
         </activity>
-        <activity android:name=".CadastrarAlimentoActivity"
+        <activity
+            android:name="br.com.food4fit.CadastrarAlimentoActivity"
             android:label="@string/title_activity_cadastrar_alimento"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="br.com.food4fit.RefeicaoActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="br.com.food4fit.food4fit.MainActivity" />
+                android:value="br.com.food4fit.MainActivity" />
         </activity>
     </application>
 
