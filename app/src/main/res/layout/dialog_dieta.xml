@@ -43,6 +43,7 @@
                 android:clickable="true"
                 android:textColor="#ffffff"
                 android:background="?selectableItemBackgroundBorderless"
+                android:id="@+id/txt_dialog_dieta_tornar_ativa"
                 android:drawableTop="@drawable/baseline_check_24" />
         </LinearLayout>
 

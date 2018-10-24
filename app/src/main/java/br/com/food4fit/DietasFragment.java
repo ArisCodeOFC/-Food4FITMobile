@@ -3,6 +3,7 @@ package br.com.food4fit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
@@ -60,6 +61,11 @@ public class DietasFragment extends Fragment {
                         editarDieta(dieta);
                     });
 
+                    dialog.setListenerAtivar(txtView -> {
+                        dialog.dismiss();
+                        ativarDieta(dieta);
+                    });
+
                     dialog.show(getFragmentManager(), "dialog");
                     return false;
                 });
@@ -98,5 +104,20 @@ public class DietasFragment extends Fragment {
         Intent intent = new Intent(getContext(), CadastrarDietaActivity.class);
         intent.putExtra("dieta", dieta);
         startActivity(intent);
+    }
+
+    private void ativarDieta(Dieta dieta) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Ativar dieta");
+        builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
+        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            dieta.getData().setAtiva(true);
+            AppDatabase.getDatabase(getContext()).getDietaDAO().desativarDietas(usuario.getId());
+            AppDatabase.getDatabase(getContext()).getDietaDAO().update(dieta.getData());
+            Snackbar.make(getActivity().findViewById(android.R.id.content), "Você agora está seguindo a dieta '" + dieta.getData().getTitulo() + "'.", Snackbar.LENGTH_SHORT).show();
+        });
+
+        builder.setNegativeButton("Não", null);
+        builder.create().show();
     }
 }

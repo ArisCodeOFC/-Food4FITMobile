@@ -18,6 +18,8 @@ public class DietaEntity implements Serializable {
     private double meta;
     @ColumnInfo(name = "id_usuario")
     private int idUsuario;
+    @ColumnInfo(name = "ativa")
+    private boolean ativa;
 
     public int getId() {
         return id;
@@ -57,5 +59,13 @@ public class DietaEntity implements Serializable {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public boolean isAtiva() {
+        return ativa;
+    }
+
+    public void setAtiva(boolean ativa) {
+        this.ativa = ativa;
     }
 }

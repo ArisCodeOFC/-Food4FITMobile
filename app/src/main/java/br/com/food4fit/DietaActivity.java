@@ -3,6 +3,7 @@ package br.com.food4fit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -24,12 +25,14 @@ import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Dieta;
 import br.com.food4fit.model.Refeicao;
+import br.com.food4fit.model.Usuario;
 
 public class DietaActivity extends AppCompatActivity {
     private Dieta dieta;
     private RefeicaoAdapter adapter;
     private List<Refeicao> refeicoes = new ArrayList<>();
     private TextView txtCalorias, txtCarboidratos, txtGorduras, txtProteinas;
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class DietaActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        usuario = ((Food4fitApp) getApplication()).getUsuario();
 
         Intent intent = getIntent();
         if (intent != null) {
@@ -121,6 +126,8 @@ public class DietaActivity extends AppCompatActivity {
             excluirDieta();
         } else if (id == R.id.item_dieta_editar) {
             editarDieta();
+        } else if (id == R.id.item_dieta_tornar_ativa) {
+            ativarDieta();
         }
 
         return super.onOptionsItemSelected(item);
@@ -174,5 +181,20 @@ public class DietaActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CadastrarDietaActivity.class);
         intent.putExtra("dieta", dieta);
         startActivity(intent);
+    }
+
+    private void ativarDieta() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Ativar dieta");
+        builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
+        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            dieta.getData().setAtiva(true);
+            AppDatabase.getDatabase(this).getDietaDAO().desativarDietas(usuario.getId());
+            AppDatabase.getDatabase(this).getDietaDAO().update(dieta.getData());
+            Snackbar.make(findViewById(android.R.id.content), "Você agora está seguindo a dieta '" + dieta.getData().getTitulo() + "'.", Snackbar.LENGTH_SHORT).show();
+        });
+
+        builder.setNegativeButton("Não", null);
+        builder.create().show();
     }
 }

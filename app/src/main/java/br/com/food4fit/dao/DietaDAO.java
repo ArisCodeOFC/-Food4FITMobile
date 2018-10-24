@@ -30,4 +30,11 @@ public interface DietaDAO {
 
     @Delete
     void delete(DietaEntity dieta);
+
+    @Query("SELECT * FROM tbl_dieta WHERE id_usuario = :idUsuario AND ativa = 1 LIMIT 1")
+    @Transaction
+    Dieta getDietaAtiva(int idUsuario);
+
+    @Query("UPDATE tbl_dieta SET ativa = 0 WHERE id_usuario = :idUsuario")
+    void desativarDietas(int idUsuario);
 }

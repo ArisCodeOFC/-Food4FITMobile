@@ -15,6 +15,7 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
     private Dieta dieta;
     private View.OnClickListener listenerExcluir;
     private View.OnClickListener listenerEditar;
+    private View.OnClickListener listenerAtivar;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -33,9 +34,11 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
         TextView txtTitulo = view.findViewById(R.id.txt_dialog_dieta_titulo);
         TextView txtExcluir = view.findViewById(R.id.txt_dialog_dieta_excluir);
         TextView txtEditar = view.findViewById(R.id.txt_dialog_dieta_editar);
+        TextView txtAtivar = view.findViewById(R.id.txt_dialog_dieta_tornar_ativa);
         txtTitulo.setText(dieta.getData().getTitulo());
         txtExcluir.setOnClickListener(listenerExcluir);
         txtEditar.setOnClickListener(listenerEditar);
+        txtAtivar.setOnClickListener(listenerAtivar);
         return view;
     }
 
@@ -45,5 +48,9 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
 
     public void setListenerEditar(View.OnClickListener listenerEditar) {
         this.listenerEditar = listenerEditar;
+    }
+
+    public void setListenerAtivar(View.OnClickListener listenerAtivar) {
+        this.listenerAtivar = listenerAtivar;
     }
 }

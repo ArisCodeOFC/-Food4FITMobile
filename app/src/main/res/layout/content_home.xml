@@ -4,14 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="br.com.food4fit.HomeFragment"
+    android:fillViewport="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/fragment_home">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical">
 
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textAlignment="center"
+           android:padding="16dp"
+           android:textSize="25sp"
+           android:fontFamily="sans-serif"
+           android:visibility="gone"
+           android:id="@+id/txt_sem_dieta_ativa"
+           android:text="Você não possui nennhuma dieta ativa. Cadastre uma nova dieta e torne-a ativa para começar a seguir." />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:visibility="gone"
+           android:id="@+id/layout_dieta_ativa">
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Refeições"
+               android:layout_marginTop="10dp"
+               android:layout_marginLeft="10dp"
+               android:textStyle="bold" />
+
+           <android.support.v7.widget.RecyclerView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               tools:listitem="@layout/item_dieta_ativa"
+               android:id="@+id/rv_dieta_ativa" />
+       </LinearLayout>
+   </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
