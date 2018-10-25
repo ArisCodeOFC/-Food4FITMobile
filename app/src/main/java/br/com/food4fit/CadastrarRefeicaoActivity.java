@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.Calendar;
-import java.util.Locale;
 
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
@@ -48,7 +47,7 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
         edtHorario.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             TimePickerDialog timePicker = new TimePickerDialog(CadastrarRefeicaoActivity.this,
-                    (timePicker1, selectedHour, selectedMinute) -> edtHorario.setText(String.format(new Locale("pt","BR"), "%02d:%02d", selectedHour, selectedMinute)),
+                    (timePicker1, selectedHour, selectedMinute) -> edtHorario.setText(String.format(Food4fitApp.LOCALE, "%02d:%02d", selectedHour, selectedMinute)),
                     calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
 
             timePicker.setTitle("Selecione um horário");

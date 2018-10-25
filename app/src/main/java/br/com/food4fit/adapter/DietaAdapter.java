@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
 
+import br.com.food4fit.Food4fitApp;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Dieta;
 
@@ -51,9 +51,9 @@ public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> 
 
         public void bind(Dieta dieta) {
             txtTitulo.setText(dieta.getData().getTitulo());
-            txtCalorias.setText(String.format(new Locale("pt","BR"), "%.2fkcal", dieta.getCalorias()));
-            txtCarboidratos.setText(String.format(new Locale("pt","BR"), "%.2fg carb", dieta.getCarboidratos()));
-            txtProteinas.setText(String.format(new Locale("pt","BR"), "%.2fg prot", dieta.getProteinas()));
+            txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", dieta.getCalorias()));
+            txtCarboidratos.setText(String.format(Food4fitApp.LOCALE, "%.2fg carb", dieta.getCarboidratos()));
+            txtProteinas.setText(String.format(Food4fitApp.LOCALE, "%.2fg prot", dieta.getProteinas()));
         }
     }
 }

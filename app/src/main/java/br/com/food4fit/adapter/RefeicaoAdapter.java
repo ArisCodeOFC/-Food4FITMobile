@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
 
+import br.com.food4fit.Food4fitApp;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Refeicao;
 
@@ -52,7 +52,7 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
 
         public void bind(Refeicao refeicao) {
             txtTitulo.setText(refeicao.getData().getTitulo());
-            txtCalorias.setText(String.format(new Locale("pt","BR"), "%.2fkcal", refeicao.getCalorias()));
+            txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", refeicao.getCalorias()));
             txtHorario.setText(refeicao.getData().getHorario());
         }
     }

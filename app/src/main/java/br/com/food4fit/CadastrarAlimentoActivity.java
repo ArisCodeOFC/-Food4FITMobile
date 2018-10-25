@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.storage.FirebaseStorage;
@@ -197,6 +198,7 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                 builder.setCancelable(false);
                 Dialog dialog = builder.create();
                 dialog.show();
+                TextView txtProgress = dialog.findViewById(R.id.txt_progress_bar);
 
                 if (!(((Food4fitApp) getApplication()).isNetworkAvailable())) {
                     salvarImagemArquivo(caminhoImagem, imageData);
@@ -213,6 +215,9 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                             .addOnCanceledListener(() -> {
                                 dialog.dismiss();
                                 Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
+                            })
+                            .addOnProgressListener(taskSnapshot -> {
+                                txtProgress.setText(String.format(Food4fitApp.LOCALE, "%d%%", (int) (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount()));
                             })
                             .addOnCompleteListener(task -> {
                                 if (task.isComplete()) {

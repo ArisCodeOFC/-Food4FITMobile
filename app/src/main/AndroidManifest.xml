@@ -53,7 +53,6 @@
         <activity
             android:name="br.com.food4fit.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_main"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

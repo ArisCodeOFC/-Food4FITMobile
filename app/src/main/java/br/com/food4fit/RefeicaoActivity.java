@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import br.com.food4fit.adapter.AlimentoAdapter;
 import br.com.food4fit.adapter.ItemClickSupport;
@@ -118,10 +117,10 @@ public class RefeicaoActivity extends AppCompatActivity {
 
     private void atualizarDados() {
         refeicao.setDadosAtualizados(false);
-        txtCalorias.setText(String.format(new Locale("pt","BR"), "%.2fkcal", refeicao.getCalorias()));
-        txtCarboidratos.setText(String.format(new Locale("pt","BR"), "%.2fg carb", refeicao.getCarboidratos()));
-        txtGorduras.setText(String.format(new Locale("pt","BR"), "%.2fg gord", refeicao.getGorduras()));
-        txtProteinas.setText(String.format(new Locale("pt","BR"), "%.2fg prot", refeicao.getProteinas()));
+        txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", refeicao.getCalorias()));
+        txtCarboidratos.setText(String.format(Food4fitApp.LOCALE, "%.2fg carb", refeicao.getCarboidratos()));
+        txtGorduras.setText(String.format(Food4fitApp.LOCALE, "%.2fg gord", refeicao.getGorduras()));
+        txtProteinas.setText(String.format(Food4fitApp.LOCALE, "%.2fg prot", refeicao.getProteinas()));
     }
 
     private void excluirAlimento(Alimento alimento) {

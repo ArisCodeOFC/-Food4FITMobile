@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.config.RetrofitConfig;
@@ -33,6 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Food4fitApp extends Application {
+    public static final Locale LOCALE = new Locale("pt","BR");
     private Usuario usuario;
     private UnidadeMedida[] unidadesMedida;
     private StorageReference storageRef;
