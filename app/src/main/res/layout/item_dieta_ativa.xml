@@ -48,6 +48,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/cb_refeicao_concluida"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true" />
     </RelativeLayout>

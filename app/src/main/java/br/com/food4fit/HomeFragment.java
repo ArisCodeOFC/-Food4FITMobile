@@ -23,6 +23,7 @@ import br.com.food4fit.adapter.DietaAtivaRefeicaoAdapter;
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Dieta;
+import br.com.food4fit.model.HistoricoAlimentacao;
 import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.Usuario;
 
@@ -58,13 +59,23 @@ public class HomeFragment extends Fragment {
 
                 List<Refeicao> refeicoes = new ArrayList<>(dieta.getRefeicoes());
                 Collections.sort(refeicoes, (refeicao1, refeicao2) -> refeicao1.getData().getHorario().compareTo(refeicao2.getData().getHorario()));
-                DietaAtivaRefeicaoAdapter adapter = new DietaAtivaRefeicaoAdapter(getContext(), refeicoes);
+
+                List<HistoricoAlimentacao> historico = AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().getHistoricoDia();
+                DietaAtivaRefeicaoAdapter adapter = new DietaAtivaRefeicaoAdapter(getContext(), refeicoes, historico);
                 rvDietaAtiva.setAdapter(adapter);
 
                 txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", dieta.getCalorias()));
                 txtCarboidratos.setText(String.format(Food4fitApp.LOCALE, "%.2fg carb", dieta.getCarboidratos()));
                 txtGorduras.setText(String.format(Food4fitApp.LOCALE, "%.2fg gord", dieta.getGorduras()));
                 txtData.setText(new SimpleDateFormat("dd/MM/yyyy", Food4fitApp.LOCALE).format(new Date()));
+
+
+                adapter.setListenerAtualizarProgresso(refeicao -> {
+                    HistoricoAlimentacao entry = new HistoricoAlimentacao();
+                    entry.setData(new Date());
+                    entry.setIdRefeicao(refeicao.getData().getId());
+                    AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().insert(entry);
+                });
             }
         }
 
