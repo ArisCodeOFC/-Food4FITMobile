@@ -15,4 +15,7 @@ public interface HistoricoAlimentacaoDAO {
 
     @Query("SELECT * FROM tbl_historico_alimentacao WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = DATE('now')")
     List<HistoricoAlimentacao> getHistoricoDia();
+
+    @Query("DELETE  FROM tbl_historico_alimentacao WHERE id_refeicao = :idRefeicao AND STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = DATE('now')")
+    void remove(int idRefeicao);
 }

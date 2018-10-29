@@ -11,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Map;
 
 import br.com.food4fit.Food4fitApp;
 import br.com.food4fit.food4fit.R;
@@ -21,10 +22,10 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
     private final Context context;
     private final LayoutInflater inflater;
     private final List<Refeicao> list;
-    private final List<HistoricoAlimentacao> historico;
+    private final Map<Integer, HistoricoAlimentacao> historico;
     private DietaAtivaRefeicaoAdapter.OnClick listenerAtualizarProgresso;
 
-    public DietaAtivaRefeicaoAdapter(Context context, List<Refeicao> list, List<HistoricoAlimentacao> historico) {
+    public DietaAtivaRefeicaoAdapter(Context context, List<Refeicao> list, Map<Integer, HistoricoAlimentacao> historico) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.list = list;
@@ -68,6 +69,8 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
             txtTitulo.setText(refeicao.getData().getTitulo());
             txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", refeicao.getCalorias()));
             txtHorario.setText(refeicao.getData().getHorario());
+            cbConcluida.setChecked(historico.containsKey(refeicao.getData().getId()));
+
             cbConcluida.setOnClickListener(v -> {
                 if (!cbConcluida.isChecked()) {
                     cbConcluida.setChecked(true);
@@ -78,20 +81,20 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
                             .setCancelable(false)
                             .setPositiveButton("Sim", (dialog, id) -> {
                                 cbConcluida.setChecked(false);
-                                listenerAtualizarProgresso.onClick(refeicao);
+                                listenerAtualizarProgresso.onClick(refeicao,  cbConcluida.isChecked());
                             })
                             .setNegativeButton("Não", null)
                             .show();
 
                 } else {
                     cbConcluida.setChecked(true);
-                    listenerAtualizarProgresso.onClick(refeicao);
+                    listenerAtualizarProgresso.onClick(refeicao, cbConcluida.isChecked());
                 }
             });
         }
     }
 
     public interface OnClick {
-        void onClick(Refeicao refeicao);
+        void onClick(Refeicao refeicao, boolean ativo);
     }
 }

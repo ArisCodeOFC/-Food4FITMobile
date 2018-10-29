@@ -61,6 +61,7 @@
                    android:layout_height="wrap_content"
                    android:layout_alignParentEnd="true"
                    android:textSize="17sp"
+                   android:id="@+id/txt_porcentagem_dieta_ativa"
                    android:text="0%" />
            </RelativeLayout>
 
@@ -72,6 +73,7 @@
                android:progress="0"
                android:max="100"
                android:scaleY="4"
+               android:id="@+id/progress_bar_dieta"
                style="?android:attr/progressBarStyleHorizontal"/>
 
            <TextView

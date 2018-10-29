@@ -1,5 +1,6 @@
 package br.com.food4fit;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -11,13 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.food4fit.adapter.DietaAtivaRefeicaoAdapter;
 import br.com.food4fit.config.AppDatabase;
@@ -28,6 +32,11 @@ import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.Usuario;
 
 public class HomeFragment extends Fragment {
+    private Map<Integer, HistoricoAlimentacao> historico;
+    private ProgressBar progressBarDieta;
+    private TextView txtPorcentagem;
+    private List<Refeicao> refeicoes;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -44,6 +53,8 @@ public class HomeFragment extends Fragment {
             TextView txtCarboidratos = view.findViewById(R.id.txt_dieta_ativa_carboidratos);
             TextView txtGorduras = view.findViewById(R.id.txt_dieta_ativa_gorduras);
             TextView txtData = view.findViewById(R.id.txt_dieta_ativa_data);
+            progressBarDieta = view.findViewById(R.id.progress_bar_dieta);
+            txtPorcentagem = view.findViewById(R.id.txt_porcentagem_dieta_ativa);
 
             rvDietaAtiva.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
             rvDietaAtiva.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -57,10 +68,11 @@ public class HomeFragment extends Fragment {
                 txtSemDietaAtiva.setVisibility(View.GONE);
                 layoutDietaAtiva.setVisibility(View.VISIBLE);
 
-                List<Refeicao> refeicoes = new ArrayList<>(dieta.getRefeicoes());
+                historico = getHistorico();
+                refeicoes = new ArrayList<>(dieta.getRefeicoes());
                 Collections.sort(refeicoes, (refeicao1, refeicao2) -> refeicao1.getData().getHorario().compareTo(refeicao2.getData().getHorario()));
+                atualizarProgresso(false);
 
-                List<HistoricoAlimentacao> historico = AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().getHistoricoDia();
                 DietaAtivaRefeicaoAdapter adapter = new DietaAtivaRefeicaoAdapter(getContext(), refeicoes, historico);
                 rvDietaAtiva.setAdapter(adapter);
 
@@ -69,16 +81,52 @@ public class HomeFragment extends Fragment {
                 txtGorduras.setText(String.format(Food4fitApp.LOCALE, "%.2fg gord", dieta.getGorduras()));
                 txtData.setText(new SimpleDateFormat("dd/MM/yyyy", Food4fitApp.LOCALE).format(new Date()));
 
+                adapter.setListenerAtualizarProgresso((refeicao, ativo) -> {
+                    if (ativo) {
+                        HistoricoAlimentacao entry = new HistoricoAlimentacao();
+                        entry.setData(new Date());
+                        entry.setIdRefeicao(refeicao.getData().getId());
+                        AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().insert(entry);
+                        historico.put(refeicao.getData().getId(), entry);
+                    } else {
+                        historico.remove(refeicao.getData().getId());
+                    }
 
-                adapter.setListenerAtualizarProgresso(refeicao -> {
-                    HistoricoAlimentacao entry = new HistoricoAlimentacao();
-                    entry.setData(new Date());
-                    entry.setIdRefeicao(refeicao.getData().getId());
-                    AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().insert(entry);
+                    atualizarProgresso(true);
                 });
             }
         }
 
         return view;
+    }
+
+    private Map<Integer, HistoricoAlimentacao> getHistorico() {
+        List<HistoricoAlimentacao> itensHistorico = AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().getHistoricoDia();
+        Map<Integer, HistoricoAlimentacao> historico = new HashMap<>();
+        for (HistoricoAlimentacao entry : itensHistorico) {
+            historico.put(entry.getIdRefeicao(), entry);
+        }
+
+        return historico;
+    }
+
+    private void atualizarProgresso(boolean animacao) {
+        int progresso = 0;
+        for (Refeicao refeicao : refeicoes) {
+            if (historico.containsKey(refeicao.getData().getId())) {
+                progresso += 1;
+            }
+        }
+
+        progresso = progresso * 100 / refeicoes.size();
+        txtPorcentagem.setText(String.format(Food4fitApp.LOCALE, "%d%%", progresso));
+
+        if (animacao) {
+            ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBarDieta, "progress", progressBarDieta.getProgress(), progresso);
+            progressAnimator.setDuration(1000);
+            progressAnimator.start();
+        } else {
+            progressBarDieta.setProgress(progresso);
+        }
     }
 }
