@@ -46,6 +46,8 @@
                 android:resource="@xml/authenticator" />
         </service>
 
+        <receiver android:name="br.com.food4fit.broadcast.AlarmReceiver" />
+
         <activity
             android:name="br.com.food4fit.LoginActivity"
             android:label="@string/title_activity_login"
