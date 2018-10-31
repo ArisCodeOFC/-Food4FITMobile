@@ -18,11 +18,6 @@
             android:title="Dietas" />
 
         <item
-            android:id="@+id/nav_refeicoes"
-            android:icon="@drawable/baseline_restaurant_24"
-            android:title="Refeições" />
-
-        <item
             android:id="@+id/nav_acompanhamento"
             android:icon="@drawable/baseline_timeline_24"
             android:title="Acompanhamento" />

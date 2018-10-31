@@ -8,7 +8,6 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 import br.com.food4fit.adapter.DietaAtivaRefeicaoAdapter;
-import br.com.food4fit.broadcast.StartUpBootReceiver;
+import br.com.food4fit.broadcast.SetAlarmReceiver;
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Dieta;
@@ -42,6 +41,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
         MainActivity activity = ((MainActivity) getActivity());
         if (activity != null && getContext() != null) {
             Toolbar toolbar = view.findViewById(R.id.toolbar);
@@ -63,8 +63,7 @@ public class HomeFragment extends Fragment {
 
             Usuario usuario = ((Food4fitApp) getActivity().getApplication()).getUsuario();
             Dieta dieta = AppDatabase.getDatabase(getContext()).getDietaDAO().getDietaAtiva(usuario.getId());
-            Log.d("teste", "idnuwadauiwdiawidawduuaw");
-            StartUpBootReceiver.setAlarms(usuario, getContext());
+            SetAlarmReceiver.setAlarms(usuario, getContext());
             if (dieta == null) {
                 txtSemDietaAtiva.setVisibility(View.VISIBLE);
                 layoutDietaAtiva.setVisibility(View.GONE);

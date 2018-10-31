@@ -16,9 +16,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import br.com.food4fit.broadcast.AlarmReceiver;
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Usuario;
+import br.com.food4fit.util.AlarmUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AccountManager accountManager;
@@ -32,11 +34,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer = findViewById(R.id.drawer_layout);
 
         Intent intent = getIntent();
-        if (intent != null) {
+        if (intent != null && intent.hasExtra("usuario")) {
             usuario = (Usuario) intent.getSerializableExtra("usuario");
+        } else {
+            usuario = ((Food4fitApp) getApplication()).getUsuario();
         }
 
-        if (intent == null || usuario == null) {
+        if (usuario == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         }
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         TextView txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
         TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
-        txtDrawerNome.setText(usuario.getNome() + " " + usuario.getSobrenome());
+        txtDrawerNome.setText(String.format(Food4fitApp.LOCALE, "%s %s", usuario.getNome(), usuario.getSobrenome()));
         txtDrawerEmail.setText(usuario.getEmail());
 
         ((Food4fitApp) getApplication()).sincronizarImagens();
@@ -85,7 +89,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item.isCheckable()) {
             configureToolbar(null);
             setTitle(item.getTitle());
-            getSupportActionBar().setTitle(item.getTitle());
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(item.getTitle());
+            }
+
             drawer.closeDrawer(GravityCompat.START);
         }
 
@@ -101,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (accounts.length > 0) {
                     AppDatabase.getDatabase(MainActivity.this).getUsuarioDAO().logout(usuario.getId());
                     accountManager.removeAccount(accounts[0], null, null);
+                    AlarmUtils.cancelAllAlarms(getApplicationContext(), new Intent(getApplicationContext(), AlarmReceiver.class));
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();
                 }

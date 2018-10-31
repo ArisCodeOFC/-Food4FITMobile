@@ -19,6 +19,9 @@ public interface RefeicaoDAO {
     @Transaction
     Refeicao select(int id);
 
+    @Query("SELECT * FROM tbl_refeicao WHERE id = :id")
+    RefeicaoEntity selectData(int id);
+
     @Update
     void update(RefeicaoEntity refeicao);
 

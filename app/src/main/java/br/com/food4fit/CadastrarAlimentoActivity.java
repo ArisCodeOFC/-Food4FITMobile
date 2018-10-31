@@ -61,7 +61,7 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
         edtGorduras = findViewById(R.id.edt_alimento_gorduras);
 
         Intent intent = getIntent();
-        if (intent != null) {
+        if (intent != null && intent.hasExtra("refeicao")) {
             refeicao = (Refeicao) intent.getSerializableExtra("refeicao");
             alimento = (Alimento) intent.getSerializableExtra("alimento");
             setTitle(refeicao.getData().getTitulo());
@@ -216,9 +216,7 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                                 dialog.dismiss();
                                 Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
                             })
-                            .addOnProgressListener(taskSnapshot -> {
-                                txtProgress.setText(String.format(Food4fitApp.LOCALE, "%d%%", (int) (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount()));
-                            })
+                            .addOnProgressListener(taskSnapshot -> txtProgress.setText(String.format(Food4fitApp.LOCALE, "%d%%", (int) (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount())))
                             .addOnCompleteListener(task -> {
                                 if (task.isComplete()) {
                                     if (task.isSuccessful()) {

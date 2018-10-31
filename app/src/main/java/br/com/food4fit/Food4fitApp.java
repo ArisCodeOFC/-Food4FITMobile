@@ -60,8 +60,12 @@ public class Food4fitApp extends Application {
 
     public boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        if (connectivityManager == null) {
+            return false;
+        } else {
+            NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+            return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+        }
     }
 
     public Usuario getUsuario() {
@@ -93,6 +97,7 @@ public class Food4fitApp extends Application {
                                         });
 
                             } catch (Exception e) {
+                                e.printStackTrace();
                             }
                         }
                     }

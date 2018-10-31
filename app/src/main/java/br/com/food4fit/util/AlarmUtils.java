@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import org.json.JSONArray;
 
@@ -15,18 +14,14 @@ import java.util.Calendar;
 import java.util.List;
 
 public class AlarmUtils {
-    private static final String sTagAlarms = ":alarms";
-
     public static void addAlarm(Context context, Intent intent, int notificationId, Calendar calendar) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         if (alarmManager != null) {
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,
                     calendar.getTimeInMillis(),
                     AlarmManager.INTERVAL_DAY,
                     pendingIntent);
-
-            Log.d("teste", "set em" + calendar.getTimeInMillis() + " " + pendingIntent.toString());
 
             saveAlarmId(context, notificationId);
         }
@@ -77,7 +72,7 @@ public class AlarmUtils {
         List<Integer> ids = new ArrayList<>();
         try {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-            JSONArray jsonArray2 = new JSONArray(prefs.getString(context.getPackageName() + sTagAlarms, "[]"));
+            JSONArray jsonArray2 = new JSONArray(prefs.getString(context.getPackageName() + ":alarms", "[]"));
             for (int i = 0; i < jsonArray2.length(); i++) {
                 ids.add(jsonArray2.getInt(i));
             }
@@ -97,7 +92,7 @@ public class AlarmUtils {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(context.getPackageName() + sTagAlarms, jsonArray.toString());
+        editor.putString(context.getPackageName() + ":alarms", jsonArray.toString());
         editor.apply();
     }
 }
