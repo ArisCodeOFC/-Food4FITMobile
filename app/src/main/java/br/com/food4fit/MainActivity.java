@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new HomeFragment()).commit();
         } else if (id == R.id.nav_dietas) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new DietasFragment()).commit();
+        } else if (id == R.id.nav_acompanhamento) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new AcompanhamentoFragment()).commit();
         }
 
         if (item.isCheckable()) {
