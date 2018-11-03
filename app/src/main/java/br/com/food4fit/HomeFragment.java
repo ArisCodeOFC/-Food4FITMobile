@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Dieta;
 import br.com.food4fit.model.HistoricoAlimentacao;
+import br.com.food4fit.model.ItemAcompanhamento;
 import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.Usuario;
 
@@ -93,6 +95,18 @@ public class HomeFragment extends Fragment {
                         historico.put(refeicao.getData().getId(), entry);
                     } else {
                         historico.remove(refeicao.getData().getId());
+                        AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().remove(refeicao.getData().getId());
+                    }
+
+                    ItemAcompanhamento acompanhamento = AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().selecionarDia();
+                    if (acompanhamento == null) {
+                        acompanhamento = new ItemAcompanhamento();
+                        acompanhamento.setData(new Date());
+                        acompanhamento.setCalorias(ativo ? refeicao.getCalorias() : 0);
+                        AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().insert(acompanhamento);
+                    } else {
+                        acompanhamento.setCalorias(acompanhamento.getCalorias() + (refeicao.getCalorias() * (ativo ? 1 : -1)));
+                        AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().update(acompanhamento);
                     }
 
                     atualizarProgresso(true);
