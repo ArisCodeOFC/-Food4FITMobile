@@ -1,34 +1,67 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="br.com.food4fit.AcompanhamentoFragment"
-    android:padding="16dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:tint="@color/colorPrimary"
-            android:src="@drawable/baseline_restaurant_24" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginLeft="5dp"
-            android:text="Alimentação" />
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/grafico_acompanhamento" />
-</LinearLayout>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:tint="@color/colorPrimary"
+                android:src="@drawable/baseline_timeline_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="5dp"
+                android:text="Calorias consumidas" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/grafico_acompanhamento" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:tint="@color/colorPrimary"
+                android:src="@drawable/baseline_restaurant_24" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginStart="5dp"
+                android:text="Calorias da dieta" />
+        </LinearLayout>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/grafico_dieta" />
+    </LinearLayout>
+</ScrollView>

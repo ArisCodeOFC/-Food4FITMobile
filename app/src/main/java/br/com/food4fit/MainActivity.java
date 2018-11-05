@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -80,12 +81,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_sair) {
             logout();
+            drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_home) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new HomeFragment()).commit();
         } else if (id == R.id.nav_dietas) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new DietasFragment()).commit();
         } else if (id == R.id.nav_acompanhamento) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new AcompanhamentoFragment()).commit();
+        } else if (id == R.id.nav_website) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.food4fit.com.br/")));
+            drawer.closeDrawer(GravityCompat.START);
         }
 
         if (item.isCheckable()) {
