@@ -34,7 +34,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
                 Notification notification =
                         new NotificationCompat.Builder(context, CHANNEL_ID)
-                                .setSmallIcon(R.drawable.logo)
+                                .setSmallIcon(R.drawable.logo_4fit_simple)
                                 .setContentTitle("É hora de comer!")
                                 .setContentText(refeicao.getHorario() + " - " + refeicao.getTitulo())
                                 .setDefaults(NotificationCompat.DEFAULT_ALL)

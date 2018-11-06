@@ -19,6 +19,7 @@ public class CadastrarDietaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_AppCompat_Dialog_Dark);
         setContentView(R.layout.activity_cadastrar_dieta);
         setFinishOnTouchOutside(false);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
