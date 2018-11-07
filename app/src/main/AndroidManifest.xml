@@ -27,6 +27,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/picker_provider_paths" />
         </provider>
+
         <receiver android:name="br.com.food4fit.broadcast.SetAlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -98,8 +99,8 @@
         <activity
             android:name="br.com.food4fit.RefeicaoActivity"
             android:label="@string/title_activity_refeicao"
-            android:parentActivityName="br.com.food4fit.DietaActivity"
             android:launchMode="singleTop"
+            android:parentActivityName="br.com.food4fit.DietaActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

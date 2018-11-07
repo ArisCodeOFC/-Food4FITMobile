@@ -7,6 +7,9 @@
         <item name="textColor">@color/textColor</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="iconColor">@color/iconColor</item>
+        <item name="backgroundColor">?android:colorBackground</item>
+        <item name="reverseColor">@color/textColorDark</item>
+        <item name="textAppearanceStyle">@style/TextInputLayout</item>
     </style>
 
     <style name="AppDarkTheme">
@@ -17,7 +20,23 @@
         <item name="textColor">@color/textColorDark</item>
         <item name="iconColor">@color/iconColorDark</item>
         <item name="android:windowBackground">@color/colorBackgroundDark</item>
+        <item name="backgroundColor">@color/colorBackgroundDark</item>
+        <item name="reverseColor">@color/textColor</item>
         <item name="bottomSheetDialogTheme">@style/ReaderBottomSheelDialog</item>
+        <item name="android:windowTitleStyle">@style/DialogBackgroundTitle</item>
+        <item name="textAppearanceStyle">@style/TextInputLayout</item>
+    </style>
+
+    <style name="DialogBackgroundTitle" parent="android:Widget.TextView">
+        <item name="android:background">@color/colorBackgroundDark</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="colorControlNormal">@color/textColorDark</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.Dark" parent="AppDarkTheme" />

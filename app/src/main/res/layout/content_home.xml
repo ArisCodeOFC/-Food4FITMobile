@@ -74,7 +74,8 @@
                android:max="100"
                android:scaleY="4"
                android:id="@+id/progress_bar_dieta"
-               style="?android:attr/progressBarStyleHorizontal"/>
+               android:progressBackgroundTint="?attr/textColor"
+               style="?android:attr/progressBarStyleHorizontal" />
 
            <TextView
                android:layout_width="match_parent"

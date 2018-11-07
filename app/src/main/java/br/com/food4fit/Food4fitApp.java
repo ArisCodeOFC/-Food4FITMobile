@@ -6,6 +6,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatDelegate;
 import android.webkit.URLUtil;
 import android.widget.Toast;
 
@@ -154,5 +155,9 @@ public class Food4fitApp extends Application {
                 emitter.onComplete();
             }
         });
+    }
+
+    public static boolean isDarkMode() {
+        return AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
     }
 }

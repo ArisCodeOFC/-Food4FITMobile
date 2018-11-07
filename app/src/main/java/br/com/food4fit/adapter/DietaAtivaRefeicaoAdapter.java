@@ -57,7 +57,7 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
         private TextView txtTitulo, txtCalorias, txtHorario;
         private CheckBox cbConcluida;
 
-        public ViewHolder(View view) {
+        private ViewHolder(View view) {
             super(view);
             txtTitulo = view.findViewById(R.id.txt_dieta_refeicao_titulo);
             txtHorario = view.findViewById(R.id.txt_dieta_refeicao_horario);
@@ -76,7 +76,8 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
                     cbConcluida.setChecked(true);
                     cbConcluida.jumpDrawablesToCurrentState();
 
-                    new AlertDialog.Builder(context)
+                    new AlertDialog.Builder(context,
+                            Food4fitApp.isDarkMode() ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert)
                             .setMessage("Deseja realmente desmarcar esta refeição? Seu progresso de hoje irá regridir")
                             .setCancelable(false)
                             .setPositiveButton("Sim", (dialog, id) -> {

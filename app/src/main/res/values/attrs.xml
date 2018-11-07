@@ -2,4 +2,7 @@
 <resources>
     <attr name="textColor" format="reference|color" />
     <attr name="iconColor" format="reference|color" />
+    <attr name="backgroundColor" format="reference|color" />
+    <attr name="textAppearanceStyle" format="reference" />
+    <attr name="reverseColor" format="reference|color" />
 </resources>

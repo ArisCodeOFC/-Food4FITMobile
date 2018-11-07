@@ -13,7 +13,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -32,11 +31,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.AppTheme_Dark_NoActionBar);
+        if (Food4fitApp.isDarkMode()) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar);
+        }
+
         setContentView(R.layout.activity_main);
         drawer = findViewById(R.id.drawer_layout);
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("usuario")) {
