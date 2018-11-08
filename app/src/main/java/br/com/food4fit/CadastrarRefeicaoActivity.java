@@ -24,6 +24,10 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Food4fitApp.isDarkMode(this)) {
+            setTheme(R.style.Theme_AppCompat_Dialog_Dark);
+        }
+
         setContentView(R.layout.activity_cadastrar_refeicao);
         setFinishOnTouchOutside(false);
         getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

@@ -87,7 +87,8 @@ public class DietasFragment extends Fragment {
     }
 
     private void excluirDieta(Dieta dieta) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),
+                Food4fitApp.isDarkMode(getContext()) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle("Excluir");
         builder.setMessage("Tem certeza que deseja excluir esta dieta e todas as suas refeições?");
         builder.setPositiveButton("Sim", (dialogInterface, i) -> {
@@ -107,7 +108,8 @@ public class DietasFragment extends Fragment {
     }
 
     private void ativarDieta(Dieta dieta) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),
+                Food4fitApp.isDarkMode(getContext()) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle("Ativar dieta");
         builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
         builder.setPositiveButton("Sim", (dialogInterface, i) -> {

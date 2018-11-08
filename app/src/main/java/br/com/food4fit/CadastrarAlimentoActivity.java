@@ -49,6 +49,10 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Food4fitApp.isDarkMode(this)) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar);
+        }
+
         setContentView(R.layout.activity_cadastrar_alimento);
 
         imgAlimento = findViewById(R.id.img_cadastrar_alimento);
@@ -97,7 +101,8 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
         );
 
         edtUnidadeMedida.setOnClickListener(view -> {
-            AlertDialog.Builder adb = new AlertDialog.Builder(this);
+            AlertDialog.Builder adb = new AlertDialog.Builder(this,
+                    Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
             adb.setSingleChoiceItems(unidadesMedidaString, unidadeSelecionada, (dialog, selected) -> {
                 unidadeSelecionada = selected;
                 edtUnidadeMedida.setText(unidadesMedida[selected].getSigla());
@@ -193,7 +198,8 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                 imgBitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
                 byte[] imageData = stream.toByteArray();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this,
+                        Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
                 builder.setView(R.layout.progress_dialog);
                 builder.setCancelable(false);
                 Dialog dialog = builder.create();

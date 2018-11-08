@@ -4,12 +4,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomSheetDialogTheme">@style/ReaderBottomSheelDialog</item>
-        <item name="textColor">@color/textColor</item>
-        <item name="android:textColor">@color/textColor</item>
+        <item name="textColor">@android:color/tab_indicator_text</item>
+        <item name="android:textColor">@android:color/tab_indicator_text</item>
+        <item name="menuColor">@color/textColor</item>
         <item name="iconColor">@color/iconColor</item>
         <item name="backgroundColor">?android:colorBackground</item>
         <item name="reverseColor">@color/textColorDark</item>
         <item name="textAppearanceStyle">@style/TextInputLayout</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
     <style name="AppDarkTheme">
@@ -17,15 +19,21 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/textColorDark</item>
+        <item name="android:textColorSecondary">@color/textColorDark</item>
         <item name="textColor">@color/textColorDark</item>
-        <item name="iconColor">@color/iconColorDark</item>
+        <item name="menuColor">@color/textColorDark</item>
+        <item name="iconColor">@color/colorPrimary</item>
         <item name="android:windowBackground">@color/colorBackgroundDark</item>
         <item name="backgroundColor">@color/colorBackgroundDark</item>
         <item name="reverseColor">@color/textColor</item>
         <item name="bottomSheetDialogTheme">@style/ReaderBottomSheelDialog</item>
         <item name="android:windowTitleStyle">@style/DialogBackgroundTitle</item>
         <item name="textAppearanceStyle">@style/TextInputLayout</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
+
+    <style name="AppTheme.Dark" parent="AppDarkTheme" />
+    <style name="Theme.AppCompat.Dialog.Dark" parent="AppDarkTheme" />
 
     <style name="DialogBackgroundTitle" parent="android:Widget.TextView">
         <item name="android:background">@color/colorBackgroundDark</item>
@@ -39,8 +47,10 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="AppDarkTheme" />
-    <style name="Theme.AppCompat.Dialog.Dark" parent="AppDarkTheme" />
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

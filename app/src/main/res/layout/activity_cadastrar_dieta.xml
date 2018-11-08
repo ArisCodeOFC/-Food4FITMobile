@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:textColor="?attr/textColor"
                 android:id="@+id/edt_dieta_titulo"
                 android:hint="Nome da Dieta" />
         </android.support.design.widget.TextInputLayout>
@@ -42,6 +43,7 @@
                 android:lines="5"
                 android:maxLines="5"
                 android:gravity="top"
+                android:textColor="?attr/textColor"
                 android:id="@+id/edt_dieta_descricao"
                 android:hint="Descrição" />
         </android.support.design.widget.TextInputLayout>
@@ -58,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:id="@+id/edt_dieta_meta"
+                android:textColor="?attr/textColor"
                 android:hint="Meta da Dieta" />
         </android.support.design.widget.TextInputLayout>
 

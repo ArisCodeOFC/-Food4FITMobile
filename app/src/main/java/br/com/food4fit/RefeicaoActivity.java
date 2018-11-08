@@ -33,6 +33,10 @@ public class RefeicaoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Food4fitApp.isDarkMode(this)) {
+            setTheme(R.style.AppTheme_Dark_NoActionBar);
+        }
+
         setContentView(R.layout.activity_refeicao);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -124,7 +128,8 @@ public class RefeicaoActivity extends AppCompatActivity {
     }
 
     private void excluirAlimento(Alimento alimento) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,
+                Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle("Excluir");
         builder.setMessage("Tem certeza que deseja excluir este alimento?");
         builder.setPositiveButton("Sim", (dialogInterface, i) -> {
@@ -147,7 +152,8 @@ public class RefeicaoActivity extends AppCompatActivity {
     }
 
     private void excluirRefeicao() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this,
+                Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setTitle("Excluir");
         builder.setMessage("Tem certeza que deseja excluir esta refeição e todos os seus alimentos?");
         builder.setPositiveButton("Sim", (dialogInterface, i) -> {

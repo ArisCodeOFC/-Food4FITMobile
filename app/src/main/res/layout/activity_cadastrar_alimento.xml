@@ -18,19 +18,22 @@
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
             android:id="@+id/img_cadastrar_alimento"
+            android:tint="?attr/iconColor"
             android:src="@drawable/baseline_add_photo_alternate_black_48" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+            android:textColorHint="?attr/textColor"
+            android:theme="?attr/textAppearanceStyle">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:id="@+id/edt_alimento_titulo"
+                android:textColor="?attr/textColor"
                 android:hint="Nome do Alimento" />
         </android.support.design.widget.TextInputLayout>
 
@@ -44,13 +47,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+                android:textColorHint="?attr/textColor"
+                android:theme="?attr/textAppearanceStyle">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:id="@+id/edt_alimento_porcao"
+                    android:textColor="?attr/textColor"
                     android:hint="Porção" />
             </android.support.design.widget.TextInputLayout>
 
@@ -58,7 +63,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+                android:textColorHint="?attr/textColor"
+                android:theme="?attr/textAppearanceStyle">
 
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
@@ -69,6 +75,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:id="@+id/edt_alimento_unidade"
+                    android:textColor="?attr/textColor"
                     android:hint="U. Medida" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -88,13 +95,15 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+                    android:textColorHint="?attr/textColor"
+                    android:theme="?attr/textAppearanceStyle">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_calorias"
+                        android:textColor="?attr/textColor"
                         android:hint="Calorias" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -115,13 +124,15 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+                    android:textColorHint="?attr/textColor"
+                    android:theme="?attr/textAppearanceStyle">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_carboidratos"
+                        android:textColor="?attr/textColor"
                         android:hint="Carboidratos" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -151,13 +162,15 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+                    android:textColorHint="?attr/textColor"
+                    android:theme="?attr/textAppearanceStyle">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_proteinas"
+                        android:textColor="?attr/textColor"
                         android:hint="Proteínas" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -178,13 +191,15 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:theme="@style/TextAppearence.App.TextInputLayoutHome">
+                    android:textColorHint="?attr/textColor"
+                    android:theme="?attr/textAppearanceStyle">
 
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_gorduras"
+                        android:textColor="?attr/textColor"
                         android:hint="Gorduras" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -205,7 +220,7 @@
             android:layout_marginTop="10dp"
             android:text="Salvar"
             android:id="@+id/btn_alimento_salvar"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/reverseColor"
             android:backgroundTint="@color/colorPrimary"/>
     </LinearLayout>
 </ScrollView>

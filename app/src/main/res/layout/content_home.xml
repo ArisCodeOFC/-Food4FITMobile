@@ -82,7 +82,8 @@
                android:layout_height="wrap_content"
                android:text="Refeições"
                android:layout_marginTop="10dp"
-               android:layout_marginLeft="10dp"
+               android:layout_marginStart="10dp"
+               android:textColor="@color/colorAccent"
                android:textStyle="bold" />
 
            <android.support.v7.widget.RecyclerView

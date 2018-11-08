@@ -77,7 +77,7 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
                     cbConcluida.jumpDrawablesToCurrentState();
 
                     new AlertDialog.Builder(context,
-                            Food4fitApp.isDarkMode() ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert)
+                            Food4fitApp.isDarkMode(context) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert)
                             .setMessage("Deseja realmente desmarcar esta refeição? Seu progresso de hoje irá regridir")
                             .setCancelable(false)
                             .setPositiveButton("Sim", (dialog, id) -> {

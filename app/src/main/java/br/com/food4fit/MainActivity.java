@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Food4fitApp.isDarkMode()) {
+        if (Food4fitApp.isDarkMode(this)) {
             setTheme(R.style.AppTheme_Dark_NoActionBar);
         }
 
@@ -55,7 +55,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         if (navigationView.getMenu().size() > 0) {
-            onNavigationItemSelected(navigationView.getMenu().getItem(0));
+            if (savedInstanceState == null) {
+                onNavigationItemSelected(navigationView.getMenu().getItem(0));
+            } else if (getSupportFragmentManager().findFragmentById(R.id.layout_main) instanceof ConfiguracoesFragment) {
+                configureToolbar(null);
+                setTitle("Configurações");
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle("Configurações");
+                }
+
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                onNavigationItemSelected(navigationView.getMenu().getItem(0));
+            }
         }
 
         TextView txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
@@ -95,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_website) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.food4fit.com.br/")));
             drawer.closeDrawer(GravityCompat.START);
+        }  else if (id == R.id.nav_configuracoes) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new ConfiguracoesFragment()).commit();
         }
 
         if (item.isCheckable()) {
@@ -111,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void logout() {
-        new AlertDialog.Builder(this)
+        new AlertDialog.Builder(this,
+                Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert)
             .setMessage("Você realmente deseja sair de sua conta?")
             .setCancelable(false)
             .setPositiveButton("Sim", (dialog, id) -> {
