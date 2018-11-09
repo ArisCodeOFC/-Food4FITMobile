@@ -71,6 +71,8 @@ public class AcompanhamentoFragment extends Fragment {
             }
         }
 
+        int color = ResourcesCompat.getColor(getResources(), Food4fitApp.isDarkMode(getContext()) ? R.color.textColorDark : R.color.textColor, null);
+
         graficoCaloriasDia.getDescription().setEnabled(false);
         graficoCaloriasDia.setTouchEnabled(false);
         graficoCaloriasDia.setDrawGridBackground(false);
@@ -80,15 +82,18 @@ public class AcompanhamentoFragment extends Fragment {
         graficoCaloriasDia.getAxisRight().setDrawLabels(false);
         graficoCaloriasDia.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         graficoCaloriasDia.getXAxis().setValueFormatter((value, axis) -> diasSemana[(int) value]);
+        graficoCaloriasDia.getXAxis().setTextColor(color);
         graficoCaloriasDia.getAxisLeft().setAxisMinimum(0);
+        graficoCaloriasDia.getAxisLeft().setTextColor(color);
         graficoCaloriasDia.getLegend().setEnabled(false);
         graficoCaloriasDia.setNoDataText("Sem dados disponíveis");
         graficoCaloriasDia.setNoDataTextColor(ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, null));
         graficoCaloriasDia.setNoDataTextTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
 
         LineDataSet lineDataSet = new LineDataSet(values, "Calorias");
-        lineDataSet.setColor(Color.BLACK);
-        lineDataSet.setCircleColor(Color.BLACK);
+        lineDataSet.setColor(color);
+        lineDataSet.setCircleColor(color);
+        lineDataSet.setValueTextColor(color);
         lineDataSet.setDrawValues(true);
         lineDataSet.setValueFormatter((v, entry, i, viewPortHandler) -> v == 0 ? "" : String.valueOf(v));
         lineDataSet.setLineWidth(1f);

@@ -50,11 +50,10 @@ public class CadastrarRefeicaoActivity extends AppCompatActivity {
 
         edtHorario.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
-            TimePickerDialog timePicker = new TimePickerDialog(CadastrarRefeicaoActivity.this,
+            TimePickerDialog timePicker = new TimePickerDialog(CadastrarRefeicaoActivity.this, R.style.TimePicker,
                     (timePicker1, selectedHour, selectedMinute) -> edtHorario.setText(String.format(Food4fitApp.LOCALE, "%02d:%02d", selectedHour, selectedMinute)),
                     calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), true);
 
-            timePicker.setTitle("Selecione um horário");
             timePicker.show();
         });
 

@@ -30,10 +30,20 @@
         <item name="android:windowTitleStyle">@style/DialogBackgroundTitle</item>
         <item name="textAppearanceStyle">@style/TextInputLayout</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="android:listDivider">@drawable/divider_dark</item>
     </style>
 
     <style name="AppTheme.Dark" parent="AppDarkTheme" />
     <style name="Theme.AppCompat.Dialog.Dark" parent="AppDarkTheme" />
+
+    <style name="TimePicker">
+        <item name="android:windowIsFloating">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="android:textColorSecondary">@color/textColor</item>
+        <item name="android:textColorPrimary">@color/textColor</item>
+    </style>
 
     <style name="DialogBackgroundTitle" parent="android:Widget.TextView">
         <item name="android:background">@color/colorBackgroundDark</item>
