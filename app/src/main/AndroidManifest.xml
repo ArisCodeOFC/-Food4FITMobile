@@ -71,7 +71,7 @@
             android:excludeFromRecents="true"
             android:label="@string/title_activity_cadastrar_dieta"
             android:parentActivityName="br.com.food4fit.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            android:theme="@style/AppTheme.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.food4fit.MainActivity" />
@@ -91,7 +91,7 @@
             android:excludeFromRecents="true"
             android:label="@string/title_activity_cadastrar_refeicao"
             android:parentActivityName="br.com.food4fit.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog">
+            android:theme="@style/AppTheme.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.food4fit.MainActivity" />

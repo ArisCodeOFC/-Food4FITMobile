@@ -10,7 +10,7 @@
         <item name="iconColor">@color/iconColor</item>
         <item name="backgroundColor">?android:colorBackground</item>
         <item name="reverseColor">@color/textColorDark</item>
-        <item name="textAppearanceStyle">@style/TextInputLayout</item>
+        <item name="textAppearanceStyle">@style/TextAppearance.AppCompat</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
     </style>
 
@@ -35,6 +35,14 @@
 
     <style name="AppTheme.Dark" parent="AppDarkTheme" />
     <style name="Theme.AppCompat.Dialog.Dark" parent="AppDarkTheme" />
+    <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="textColor">@android:color/tab_indicator_text</item>
+        <item name="menuColor">@color/textColor</item>
+        <item name="iconColor">@color/iconColor</item>
+        <item name="backgroundColor">?android:colorBackground</item>
+        <item name="reverseColor">@color/textColorDark</item>
+        <item name="textAppearanceStyle">@style/TextAppearance.AppCompat</item>
+    </style>
 
     <style name="TimePicker">
         <item name="android:windowIsFloating">true</item>
