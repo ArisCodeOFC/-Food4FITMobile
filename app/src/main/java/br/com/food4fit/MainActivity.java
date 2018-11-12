@@ -15,7 +15,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import br.com.food4fit.broadcast.AlarmReceiver;
 import br.com.food4fit.config.AppDatabase;
@@ -70,10 +73,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
+        ImageView imgAvatar = navigationView.getHeaderView(0).findViewById(R.id.img_drawer_avatar);
         TextView txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
         TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
         txtDrawerNome.setText(String.format(Food4fitApp.LOCALE, "%s %s", usuario.getNome(), usuario.getSobrenome()));
         txtDrawerEmail.setText(usuario.getEmail());
+        if (usuario.getAvatar() != null && !usuario.getAvatar().isEmpty()) {
+            Picasso.get().load("http://10.0.2.2/food4fit/" + usuario.getAvatar()).into(imgAvatar);
+        }
 
         ((Food4fitApp) getApplication()).sincronizarImagens();
     }

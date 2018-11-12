@@ -173,6 +173,7 @@
     <orderEntry type="library" name="com.google.firebase:firebase-analytics-16.0.3" level="project" />
     <orderEntry type="library" name="android.arch.persistence.room:runtime-1.1.1" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-stats-15.0.1" level="project" />
+    <orderEntry type="library" name="org.projectlombok:lombok:1.18.4@jar" level="project" />
     <orderEntry type="library" name="com.github.jrvansuita:PickImage-2.2.4" level="project" />
     <orderEntry type="library" name="com.google.android.gms:play-services-flags-15.0.1" level="project" />
     <orderEntry type="library" name="android.arch.lifecycle:viewmodel-1.1.0" level="project" />

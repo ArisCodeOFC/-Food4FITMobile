@@ -8,9 +8,12 @@ import android.arch.persistence.room.TypeConverters;
 import java.util.Date;
 
 import br.com.food4fit.converter.DateConverter;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity(tableName = "tbl_acompanhamento")
 @TypeConverters(DateConverter.class)
+@Getter @Setter
 public class ItemAcompanhamento {
     @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
     private int id;

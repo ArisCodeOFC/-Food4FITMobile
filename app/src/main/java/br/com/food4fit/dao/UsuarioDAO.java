@@ -12,7 +12,7 @@ public interface UsuarioDAO {
     @Query("SELECT * FROM tbl_usuario WHERE email = :email AND login = 1")
     Usuario findByEmail(String email);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Usuario usuario);
 
     @Query("UPDATE tbl_usuario SET login = 1 WHERE id = :idUsuario")
