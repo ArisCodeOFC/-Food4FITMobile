@@ -6,66 +6,16 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity(tableName = "tbl_dieta")
+@Getter @Setter
 public class DietaEntity implements Serializable {
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "titulo")
+    private @PrimaryKey(autoGenerate = true) int id;
     private String titulo;
-    @ColumnInfo(name = "descricao")
     private String descricao;
-    @ColumnInfo(name = "meta")
     private double meta;
-    @ColumnInfo(name = "id_usuario")
-    private int idUsuario;
-    @ColumnInfo(name = "ativa")
+    private @ColumnInfo(name = "id_usuario") int idUsuario;
     private boolean ativa;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public double getMeta() {
-        return meta;
-    }
-
-    public void setMeta(double meta) {
-        this.meta = meta;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public boolean isAtiva() {
-        return ativa;
-    }
-
-    public void setAtiva(boolean ativa) {
-        this.ativa = ativa;
-    }
 }

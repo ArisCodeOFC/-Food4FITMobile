@@ -7,39 +7,19 @@ import android.arch.persistence.room.Relation;
 import java.io.Serializable;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Refeicao implements Serializable {
-    @Embedded
-    private RefeicaoEntity data;
-    @Relation(parentColumn = "id", entityColumn = "id_refeicao")
-    private List<Alimento> alimentos;
-    @Ignore
-    private boolean dadosAtualizados;
-    @Ignore
-    private double calorias;
-    @Ignore
-    private double carboidratos;
-    @Ignore
-    private double gorduras;
-    @Ignore
-    private double proteinas;
+    private @Getter @Setter @Embedded RefeicaoEntity data;
+    private @Getter @Setter @Relation(parentColumn = "id", entityColumn = "id_refeicao") List<Alimento> alimentos;
+    private @Setter @Ignore boolean dadosAtualizados;
+    private @Ignore double calorias;
+    private @Ignore double carboidratos;
+    private @Ignore double gorduras;
+    private @Ignore double proteinas;
 
-    public RefeicaoEntity getData() {
-        return data;
-    }
-
-    public void setData(RefeicaoEntity data) {
-        this.data = data;
-    }
-
-    public List<Alimento> getAlimentos() {
-        return alimentos;
-    }
-
-    public void setAlimentos(List<Alimento> alimentos) {
-        this.alimentos = alimentos;
-    }
-
-    public void atualizarDados() {
+    private void atualizarDados() {
         if (!dadosAtualizados) {
             dadosAtualizados = true;
             calorias = carboidratos = gorduras = proteinas = 0;
@@ -50,10 +30,6 @@ public class Refeicao implements Serializable {
                 proteinas += alimento.getProteinas();
             }
         }
-    }
-
-    public void setDadosAtualizados(boolean dadosAtualizados) {
-        this.dadosAtualizados = dadosAtualizados;
     }
 
     public double getCalorias() {

@@ -6,56 +6,15 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity(tableName = "tbl_refeicao")
+@Getter @Setter
 public class RefeicaoEntity implements Serializable {
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "id_dieta")
-    private int idDieta;
-    @ColumnInfo(name = "titulo")
+    private @PrimaryKey(autoGenerate = true) int id;
+    private @ColumnInfo(name = "id_dieta") int idDieta;
     private String titulo;
-    @ColumnInfo(name = "descricao")
     private String descricao;
-    @ColumnInfo(name = "horario")
     private String horario;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdDieta() {
-        return idDieta;
-    }
-
-    public void setIdDieta(int idDieta) {
-        this.idDieta = idDieta;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
 }

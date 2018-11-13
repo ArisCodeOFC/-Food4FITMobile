@@ -15,7 +15,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -25,6 +24,7 @@ import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
 import br.com.food4fit.model.Usuario;
 import br.com.food4fit.util.AlarmUtils;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AccountManager accountManager;
@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        ImageView imgAvatar = navigationView.getHeaderView(0).findViewById(R.id.img_drawer_avatar);
+        CircleImageView imgAvatar = navigationView.getHeaderView(0).findViewById(R.id.img_drawer_avatar);
         TextView txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
         TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
         txtDrawerNome.setText(String.format(Food4fitApp.LOCALE, "%s %s", usuario.getNome(), usuario.getSobrenome()));
         txtDrawerEmail.setText(usuario.getEmail());
         if (usuario.getAvatar() != null && !usuario.getAvatar().isEmpty()) {
-            Picasso.get().load("http://10.0.2.2/food4fit/" + usuario.getAvatar()).into(imgAvatar);
+            Picasso.get().load("http://10.0.2.2/food4fit/" + usuario.getAvatar()).error(R.drawable.baseline_person_24).into(imgAvatar);
         }
 
         ((Food4fitApp) getApplication()).sincronizarImagens();
@@ -114,8 +114,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_website) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.food4fit.com.br/")));
             drawer.closeDrawer(GravityCompat.START);
-        }  else if (id == R.id.nav_configuracoes) {
+        } else if (id == R.id.nav_configuracoes) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new ConfiguracoesFragment()).commit();
+        } else if (id == R.id.nav_perfil) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new PerfilFragment()).commit();
         }
 
         if (item.isCheckable()) {

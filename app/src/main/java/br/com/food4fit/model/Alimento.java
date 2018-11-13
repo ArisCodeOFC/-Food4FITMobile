@@ -12,108 +12,22 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.io.Serializable;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity(tableName = "tbl_alimento")
+@Getter @Setter
 public class Alimento implements Serializable {
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "id_refeicao")
-    private int idRefeicao;
-    @ColumnInfo(name = "titulo")
+    private @PrimaryKey(autoGenerate = true) int id;
+    private @ColumnInfo(name = "id_refeicao") int idRefeicao;
     private String titulo;
-    @ColumnInfo(name = "porcao")
     private double porcao;
-    @ColumnInfo(name = "unidade_medida")
-    private String unidadeMedida;
-    @ColumnInfo(name = "calorias")
+    private @ColumnInfo(name = "unidade_medida") String unidadeMedida;
     private double calorias;
-    @ColumnInfo(name = "carboidratos")
     private double carboidratos;
-    @ColumnInfo(name = "proteinas")
     private double proteinas;
-    @ColumnInfo(name = "gorduras")
     private double gorduras;
-    @ColumnInfo(name = "imagem")
     private String imagem;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdRefeicao() {
-        return idRefeicao;
-    }
-
-    public void setIdRefeicao(int idRefeicao) {
-        this.idRefeicao = idRefeicao;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public double getPorcao() {
-        return porcao;
-    }
-
-    public void setPorcao(double porcao) {
-        this.porcao = porcao;
-    }
-
-    public String getUnidadeMedida() {
-        return unidadeMedida;
-    }
-
-    public void setUnidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
-    }
-
-    public double getCalorias() {
-        return calorias;
-    }
-
-    public void setCalorias(double calorias) {
-        this.calorias = calorias;
-    }
-
-    public double getCarboidratos() {
-        return carboidratos;
-    }
-
-    public void setCarboidratos(double carboidratos) {
-        this.carboidratos = carboidratos;
-    }
-
-    public double getProteinas() {
-        return proteinas;
-    }
-
-    public void setProteinas(double proteinas) {
-        this.proteinas = proteinas;
-    }
-
-    public double getGorduras() {
-        return gorduras;
-    }
-
-    public void setGorduras(double gorduras) {
-        this.gorduras = gorduras;
-    }
-
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
 
     public void loadImage(Context context, ImageView view) {
         if (URLUtil.isValidUrl(getImagem())) {
@@ -126,6 +40,7 @@ public class Alimento implements Serializable {
                 }
 
             } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

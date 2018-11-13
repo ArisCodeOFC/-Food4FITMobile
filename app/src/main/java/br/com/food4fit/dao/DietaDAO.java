@@ -14,26 +14,18 @@ import br.com.food4fit.model.DietaEntity;
 
 @Dao
 public interface DietaDAO {
-    @Insert
-    void insert(DietaEntity dieta);
+    @Insert void insert(DietaEntity dieta);
+    @Update void update(DietaEntity dieta);
+    @Delete void delete(DietaEntity dieta);
 
     @Query("SELECT * FROM tbl_dieta WHERE id_usuario = :idUsuario")
-    @Transaction
-    List<Dieta> selectAll(int idUsuario);
+    @Transaction List<Dieta> selectAll(int idUsuario);
 
     @Query("SELECT * FROM tbl_dieta WHERE id = :id")
-    @Transaction
-    Dieta select(int id);
-
-    @Update
-    void update(DietaEntity dieta);
-
-    @Delete
-    void delete(DietaEntity dieta);
+    @Transaction Dieta select(int id);
 
     @Query("SELECT * FROM tbl_dieta WHERE id_usuario = :idUsuario AND ativa = 1 LIMIT 1")
-    @Transaction
-    Dieta getDietaAtiva(int idUsuario);
+    @Transaction Dieta getDietaAtiva(int idUsuario);
 
     @Query("UPDATE tbl_dieta SET ativa = 0 WHERE id_usuario = :idUsuario")
     void desativarDietas(int idUsuario);

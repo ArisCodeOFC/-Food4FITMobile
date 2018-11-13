@@ -9,12 +9,7 @@ import br.com.food4fit.model.Alimento;
 
 @Dao
 public interface AlimentoDAO {
-    @Insert
-    void insert(Alimento alimento);
-
-    @Update
-    void update(Alimento alimento);
-
-    @Delete
-    void delete(Alimento alimento);
+    @Insert void insert(Alimento alimento);
+    @Update void update(Alimento alimento);
+    @Delete void delete(Alimento alimento);
 }

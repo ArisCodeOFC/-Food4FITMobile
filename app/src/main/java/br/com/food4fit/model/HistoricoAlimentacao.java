@@ -9,39 +9,15 @@ import android.arch.persistence.room.TypeConverters;
 import java.util.Date;
 
 import br.com.food4fit.converter.DateConverter;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity(tableName = "tbl_historico_alimentacao")
 @TypeConverters(DateConverter.class)
 @ForeignKey(entity = RefeicaoEntity.class, parentColumns = "idRefeicao", childColumns = "id", onDelete = ForeignKey.CASCADE)
+@Getter @Setter
 public class HistoricoAlimentacao {
-    @ColumnInfo(name = "id") @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "id_refeicao")
-    private int idRefeicao;
-    @ColumnInfo(name = "data")
+    private @PrimaryKey(autoGenerate = true) int id;
+    private @ColumnInfo(name = "id_refeicao") int idRefeicao;
     private Date data;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdRefeicao() {
-        return idRefeicao;
-    }
-
-    public void setIdRefeicao(int idRefeicao) {
-        this.idRefeicao = idRefeicao;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
 }

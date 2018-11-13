@@ -12,19 +12,13 @@ import br.com.food4fit.model.RefeicaoEntity;
 
 @Dao
 public interface RefeicaoDAO {
-    @Insert
-    void insert(RefeicaoEntity refeicao);
+    @Insert void insert(RefeicaoEntity refeicao);
+    @Update void update(RefeicaoEntity refeicao);
+    @Delete void delete(RefeicaoEntity refeicao);
 
     @Query("SELECT * FROM tbl_refeicao WHERE id = :id")
-    @Transaction
-    Refeicao select(int id);
+    @Transaction Refeicao select(int id);
 
     @Query("SELECT * FROM tbl_refeicao WHERE id = :id")
     RefeicaoEntity selectData(int id);
-
-    @Update
-    void update(RefeicaoEntity refeicao);
-
-    @Delete
-    void delete(RefeicaoEntity refeicao);
 }

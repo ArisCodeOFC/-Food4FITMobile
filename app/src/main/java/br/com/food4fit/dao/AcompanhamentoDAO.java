@@ -14,11 +14,8 @@ import br.com.food4fit.model.ItemAcompanhamento;
 @Dao
 @TypeConverters(DateConverter.class)
 public interface AcompanhamentoDAO {
-    @Insert
-    void insert(ItemAcompanhamento item);
-
-    @Update
-    void update(ItemAcompanhamento item);
+    @Insert void insert(ItemAcompanhamento item);
+    @Update void update(ItemAcompanhamento item);
 
     @Query("SELECT * FROM tbl_acompanhamento WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = DATE('NOW')")
     ItemAcompanhamento selecionarDia();

@@ -10,8 +10,7 @@ import br.com.food4fit.model.HistoricoAlimentacao;
 
 @Dao
 public interface HistoricoAlimentacaoDAO {
-    @Insert
-    void insert(HistoricoAlimentacao entry);
+    @Insert void insert(HistoricoAlimentacao entry);
 
     @Query("SELECT * FROM tbl_historico_alimentacao WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = DATE('now')")
     List<HistoricoAlimentacao> getHistoricoDia();
