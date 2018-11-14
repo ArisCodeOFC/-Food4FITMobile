@@ -24,7 +24,7 @@
                 android:paddingTop="16dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/img_drawer_avatar"
+                    android:id="@+id/img_perfil_avatar"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@mipmap/ic_launcher_round" />
@@ -41,11 +41,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Nome do usuário"
+                        android:id="@+id/txt_perfil_nome"
                         android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/txt_perfil_email"
                         android:text="email@provedor.com" />
                 </LinearLayout>
             </LinearLayout>
@@ -55,7 +57,7 @@
                 android:layout_height="1dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
-                android:background="?attr/menuColor" />
+                android:background="?attr/textColorPrimary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -129,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:background="?attr/menuColor" />
+                android:background="?attr/textColorPrimary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -147,7 +149,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
+                        android:id="@+id/edt_perfil_nome"
                         android:hint="Nome" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -162,7 +165,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
+                        android:id="@+id/edt_perfil_email"
                         android:hint="E-mail" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -176,8 +180,10 @@
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="?attr/textColor"
+                        android:inputType="none"
+                        android:enabled="false"
+                        android:textColor="?attr/textColorPrimary"
+                        android:id="@+id/edt_perfil_rg"
                         android:hint="RG" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -191,8 +197,10 @@
                     <android.support.design.widget.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="?attr/textColor"
+                        android:inputType="none"
+                        android:enabled="false"
+                        android:textColor="?attr/textColorPrimary"
+                        android:id="@+id/edt_perfil_cpf"
                         android:hint="CPF" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -207,7 +215,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="date"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
+                        android:id="@+id/edt_perfil_data_nascimento"
                         android:hint="Data de Nascimento" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -249,7 +258,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
                         android:hint="Telefone" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -264,7 +273,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
                         android:hint="Celular" />
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
