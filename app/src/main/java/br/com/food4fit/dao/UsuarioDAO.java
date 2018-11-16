@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import br.com.food4fit.model.Usuario;
 
@@ -11,6 +12,8 @@ import br.com.food4fit.model.Usuario;
 public interface UsuarioDAO {
     @Query("SELECT * FROM tbl_usuario WHERE email = :email AND login = 1")
     Usuario findByEmail(String email);
+
+    @Update void update(Usuario usuario);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Usuario usuario);

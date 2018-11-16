@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AccountManager accountManager;
     private DrawerLayout drawer;
     private Usuario usuario;
+    private CircleImageView imgAvatar;
+    private TextView txtDrawerNome, txtDrawerEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,21 +75,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        CircleImageView imgAvatar = navigationView.getHeaderView(0).findViewById(R.id.img_drawer_avatar);
-        TextView txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
-        TextView txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
+        imgAvatar = navigationView.getHeaderView(0).findViewById(R.id.img_drawer_avatar);
+        txtDrawerNome = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_nome);
+        txtDrawerEmail = navigationView.getHeaderView(0).findViewById(R.id.txt_drawer_email);
+        atualizarHeader();
+
+        ((Food4fitApp) getApplication()).sincronizarImagens();
+    }
+
+    public void atualizarHeader() {
+        usuario = ((Food4fitApp) getApplication()).getUsuario();
         txtDrawerNome.setText(String.format(Food4fitApp.LOCALE, "%s %s", usuario.getNome(), usuario.getSobrenome()));
         txtDrawerEmail.setText(usuario.getEmail());
         if (usuario.getAvatar() != null && !usuario.getAvatar().isEmpty()) {
             Picasso.get().load("http://10.0.2.2/food4fit/" + usuario.getAvatar()).error(R.drawable.baseline_person_24).into(imgAvatar);
         }
-
-        ((Food4fitApp) getApplication()).sincronizarImagens();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
     }
 
     @Override

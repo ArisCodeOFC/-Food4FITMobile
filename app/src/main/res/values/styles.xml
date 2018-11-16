@@ -5,7 +5,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomSheetDialogTheme">@style/ReaderBottomSheelDialog</item>
         <item name="textColor">@android:color/tab_indicator_text</item>
-        <item name="android:textColor">@android:color/tab_indicator_text</item>
         <item name="textColorPrimary">@color/textColor</item>
         <item name="iconColor">@color/iconColor</item>
         <item name="backgroundColor">?android:colorBackground</item>

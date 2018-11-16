@@ -8,4 +8,39 @@
             android:title="Dark mode"
             android:summary="Usar tema escuro ao invés do tema padrão" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Versão">
+        <Preference
+            android:key="pref_versao"
+            android:selectable="true"
+            android:persistent="false"
+            android:title="Versão do app: 1.0" />
+
+        <Preference
+            android:key="pref_codigo_fonte"
+            android:selectable="true"
+            android:persistent="false"
+            android:title="Ver código-fonte" />
+
+        <Preference
+            android:key="pref_classificar"
+            android:selectable="true"
+            android:persistent="false"
+            android:title="Classificar-nos" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Desenvolvimento">
+        <Preference
+            android:key="pref_copyright"
+            android:selectable="false"
+            android:persistent="false"
+            android:title="Copyright by ArisCode, 2010 - 2018" />
+
+        <Preference
+            android:key="pref_rights"
+            android:selectable="false"
+            android:persistent="false"
+            android:title="All rights reserved." />
+    </PreferenceCategory>
 </PreferenceScreen>
