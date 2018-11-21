@@ -28,9 +28,9 @@
             android:title="Hidratação" />
 
         <item
-            android:id="@+id/nav_armario"
+            android:id="@+id/nav_compras"
             android:icon="@drawable/baseline_assignment_24"
-            android:title="Armário" />
+            android:title="Minhas Compras" />
     </group>
 
     <group android:checkableBehavior="single" android:id="@+id/group_drawer_3">

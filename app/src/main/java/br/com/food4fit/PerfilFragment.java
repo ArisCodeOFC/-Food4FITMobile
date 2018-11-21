@@ -1,11 +1,16 @@
 package br.com.food4fit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -20,6 +25,7 @@ import java.util.Calendar;
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.config.RetrofitConfig;
 import br.com.food4fit.food4fit.R;
+import br.com.food4fit.model.ItemDadosSaude;
 import br.com.food4fit.model.Usuario;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -31,7 +37,13 @@ public class PerfilFragment extends Fragment {
     private Usuario usuario;
     private EditText edtNome, edtTelefone, edtCelular;
     private RadioButton rbMasculino, rbFeminino;
-    private TextView txtNome;
+    private TextView txtNome, txtPeso, txtAltura;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +56,8 @@ public class PerfilFragment extends Fragment {
             txtNome = view.findViewById(R.id.txt_perfil_nome);
             TextView txtEmail = view.findViewById(R.id.txt_perfil_email);
             TextView txtIdade = view.findViewById(R.id.txt_perfil_idade);
+            txtPeso = view.findViewById(R.id.txt_perfil_peso);
+            txtAltura = view.findViewById(R.id.txt_perfil_altura);
             edtNome = view.findViewById(R.id.edt_perfil_nome);
             EditText edtEmail = view.findViewById(R.id.edt_perfil_email);
             EditText edtRg = view.findViewById(R.id.edt_perfil_rg);
@@ -75,6 +89,16 @@ public class PerfilFragment extends Fragment {
         }
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ItemDadosSaude dados = AppDatabase.getDatabase(getContext()).getDadosSaudeDAO().selecionarAtual(usuario.getId());
+        if (dados != null) {
+            txtPeso.setText(String.format(Food4fitApp.LOCALE, "%.2f", dados.getPeso()));
+            txtAltura.setText(String.format(Food4fitApp.LOCALE, "%.2f", dados.getAltura()));
+        }
     }
 
     private void salvarPerfil() {
@@ -142,5 +166,20 @@ public class PerfilFragment extends Fragment {
         }
 
         return String.valueOf(idade);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_perfil, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.item_perfil_dados_saude) {
+            startActivity(new Intent(getContext(), DadosSaudeActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

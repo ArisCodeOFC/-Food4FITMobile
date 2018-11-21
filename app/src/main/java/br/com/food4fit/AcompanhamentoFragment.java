@@ -63,7 +63,7 @@ public class AcompanhamentoFragment extends Fragment {
         for (int i = 0; i < 7; i++) {
             calendar.add(Calendar.DAY_OF_YEAR, 1);
             diasSemana[i + 1] =  calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Food4fitApp.LOCALE);
-            ItemAcompanhamento acompanhamento = AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().selecionarDia(calendar.getTime());
+            ItemAcompanhamento acompanhamento = AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().selecionarDia(usuario.getId(), calendar.getTime());
             if (acompanhamento == null) {
                 values.add(new Entry(i + 1, 0));
             } else {

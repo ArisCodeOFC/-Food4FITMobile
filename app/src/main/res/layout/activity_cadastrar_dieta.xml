@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textColor="?attr/textColor"
+                android:textColor="?attr/textColorPrimary"
                 android:id="@+id/edt_dieta_titulo"
                 android:hint="Nome da Dieta" />
         </android.support.design.widget.TextInputLayout>
@@ -43,26 +43,48 @@
                 android:lines="5"
                 android:maxLines="5"
                 android:gravity="top"
-                android:textColor="?attr/textColor"
+                android:textColor="?attr/textColorPrimary"
                 android:id="@+id/edt_dieta_descricao"
                 android:hint="Descrição" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColorHint="?attr/textColor"
-            android:theme="?attr/textAppearanceStyle">
+            android:layout_marginEnd="10dp">
 
-            <android.support.design.widget.TextInputEditText
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:id="@+id/edt_dieta_meta"
-                android:textColor="?attr/textColor"
-                android:hint="Meta da Dieta" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginTop="10dp"
+                android:textColorHint="?attr/textColor"
+                android:theme="?attr/textAppearanceStyle">
+
+                <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:id="@+id/edt_dieta_meta"
+                    android:textColor="?attr/textColorPrimary"
+                    android:hint="Meta da Dieta" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingTop="5dp"
+                android:text="kcal" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:text="A meta da dieta representa a quantidade mínima de calorias a ser consumida diariamente" />
 
         <Button
             android:layout_width="match_parent"

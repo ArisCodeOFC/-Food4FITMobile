@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,7 +36,9 @@ import br.com.food4fit.model.Usuario;
 public class HomeFragment extends Fragment {
     private Map<Integer, HistoricoAlimentacao> historico;
     private ProgressBar progressBarDieta;
-    private TextView txtPorcentagem;
+    private TextView txtPorcentagem, txtMeta;
+    private Usuario usuario;
+    private Dieta dieta;
     private List<Refeicao> refeicoes;
 
     @Override
@@ -59,12 +60,13 @@ public class HomeFragment extends Fragment {
             TextView txtData = view.findViewById(R.id.txt_dieta_ativa_data);
             progressBarDieta = view.findViewById(R.id.progress_bar_dieta);
             txtPorcentagem = view.findViewById(R.id.txt_porcentagem_dieta_ativa);
+            txtMeta = view.findViewById(R.id.txt_dieta_ativa_meta);
 
             rvDietaAtiva.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
             rvDietaAtiva.setLayoutManager(new LinearLayoutManager(getContext()));
 
-            Usuario usuario = ((Food4fitApp) getActivity().getApplication()).getUsuario();
-            Dieta dieta = AppDatabase.getDatabase(getContext()).getDietaDAO().getDietaAtiva(usuario.getId());
+            usuario = ((Food4fitApp) getActivity().getApplication()).getUsuario();
+            dieta = AppDatabase.getDatabase(getContext()).getDietaDAO().getDietaAtiva(usuario.getId());
             SetAlarmReceiver.setAlarms(usuario, getContext());
             if (dieta == null) {
                 txtSemDietaAtiva.setVisibility(View.VISIBLE);
@@ -98,19 +100,23 @@ public class HomeFragment extends Fragment {
                         AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().remove(refeicao.getData().getId());
                     }
 
-                    ItemAcompanhamento acompanhamento = AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().selecionarDia();
+                    ItemAcompanhamento acompanhamento = AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().selecionarDia(usuario.getId());
                     if (acompanhamento == null) {
                         acompanhamento = new ItemAcompanhamento();
                         acompanhamento.setData(new Date());
                         acompanhamento.setCalorias(ativo ? refeicao.getCalorias() : 0);
+                        acompanhamento.setIdUsuario(usuario.getId());
                         AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().insert(acompanhamento);
                     } else {
                         acompanhamento.setCalorias(acompanhamento.getCalorias() + (refeicao.getCalorias() * (ativo ? 1 : -1)));
                         AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().update(acompanhamento);
                     }
 
+                    atualizarAcompanhamento(acompanhamento);
                     atualizarProgresso(true);
                 });
+
+                atualizarAcompanhamento(null);
             }
         }
 
@@ -135,7 +141,7 @@ public class HomeFragment extends Fragment {
             }
         }
 
-        progresso = progresso * 100 / refeicoes.size();
+        progresso = progresso * 100 / Math.max(refeicoes.size(), 1);
         txtPorcentagem.setText(String.format(Food4fitApp.LOCALE, "%d%%", progresso));
 
         if (animacao) {
@@ -144,6 +150,20 @@ public class HomeFragment extends Fragment {
             progressAnimator.start();
         } else {
             progressBarDieta.setProgress(progresso);
+        }
+    }
+
+    private void atualizarAcompanhamento(ItemAcompanhamento acompanhamento) {
+        if (acompanhamento == null) {
+            acompanhamento = AppDatabase.getDatabase(getContext()).getAcompanhamentoDAO().selecionarDia(usuario.getId());
+        }
+
+        if (acompanhamento == null) {
+            txtMeta.setText(String.format(Food4fitApp.LOCALE, "Você ainda não atingiu sua meta de %.2fkcal hoje. Foram consumidos 0kcal.", dieta.getData().getMeta()));
+        } else if (acompanhamento.getCalorias() >= dieta.getData().getMeta()) {
+            txtMeta.setText(String.format(Food4fitApp.LOCALE, "Você atingiu sua meta de %.2fkcal hoje. Foram consumidos %.2fkcal.", dieta.getData().getMeta(), acompanhamento.getCalorias()));
+        } else {
+            txtMeta.setText(String.format(Food4fitApp.LOCALE, "Você ainda não atingiu sua meta de %.2fkcal hoje. Foram consumidos %.2fkcal.", dieta.getData().getMeta(), acompanhamento.getCalorias()));
         }
     }
 }

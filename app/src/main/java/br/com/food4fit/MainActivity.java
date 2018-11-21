@@ -3,7 +3,6 @@ package br.com.food4fit;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -54,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
         }
+
+        ((Food4fitApp) getApplication()).sincronizarCompras(this);
 
         accountManager = AccountManager.get(this);
 
@@ -113,6 +114,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new DietasFragment()).commit();
         } else if (id == R.id.nav_acompanhamento) {
             getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new AcompanhamentoFragment()).commit();
+        } else if (id == R.id.nav_hidratacao) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new HidratacaoFragment()).commit();
+        } else if (id == R.id.nav_compras) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.layout_main, new ComprasFragment()).commit();
         } else if (id == R.id.nav_website) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.food4fit.com.br/")));
             drawer.closeDrawer(GravityCompat.START);

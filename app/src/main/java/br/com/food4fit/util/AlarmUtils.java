@@ -27,7 +27,7 @@ public class AlarmUtils {
         }
     }
 
-    public static void cancelAlarm(Context context, Intent intent, int notificationId) {
+    private static void cancelAlarm(Context context, Intent intent, int notificationId) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         if (alarmManager != null) {
@@ -41,10 +41,6 @@ public class AlarmUtils {
         for (int idAlarm : getAlarmIds(context)) {
             cancelAlarm(context, intent, idAlarm);
         }
-    }
-
-    public static boolean hasAlarm(Context context, Intent intent, int notificationId) {
-        return PendingIntent.getBroadcast(context, notificationId, intent, PendingIntent.FLAG_NO_CREATE) != null;
     }
 
     private static void saveAlarmId(Context context, int id) {
@@ -68,7 +64,7 @@ public class AlarmUtils {
         saveIdsInPreferences(context, idsAlarms);
     }
 
-    public static List<Integer> getAlarmIds(Context context) {
+    private static List<Integer> getAlarmIds(Context context) {
         List<Integer> ids = new ArrayList<>();
         try {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

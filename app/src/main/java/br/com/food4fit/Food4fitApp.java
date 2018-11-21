@@ -6,7 +6,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.webkit.URLUtil;
 import android.widget.Toast;
 
@@ -22,9 +21,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import br.com.food4fit.broadcast.SetAlarmReceiver;
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.config.RetrofitConfig;
 import br.com.food4fit.model.Alimento;
+import br.com.food4fit.model.Compra;
 import br.com.food4fit.model.Dieta;
 import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.UnidadeMedida;
@@ -159,5 +160,38 @@ public class Food4fitApp extends Application {
 
     public static boolean isDarkMode(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_mode", false);
+    }
+
+    public void sincronizarCompras(Context context) {
+        if (isNetworkAvailable()) {
+            Usuario usuario = getUsuario();
+            new RetrofitConfig().getUsuarioService().listarCompras(usuario.getId()).enqueue(
+                    new Callback<Compra[]>() {
+                        @Override
+                        public void onResponse(Call<Compra[]> call, Response<Compra[]> response) {
+                            Compra[] pedidos = response.body();
+                            if (pedidos != null) {
+                                List<Compra> compras = AppDatabase.getDatabase(context).getCompraDAO().selecionarTodos(usuario.getId());
+                                for (Compra compra : pedidos) {
+                                    AppDatabase.getDatabase(context).getCompraDAO().insert(compra);
+                                    compras.remove(compra);
+                                }
+
+                                for (Compra compra : compras) {
+                                    AppDatabase.getDatabase(context).getCompraDAO().remove(compra);
+                                }
+
+                                SetAlarmReceiver.setAlarms(usuario, context);
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Compra[]> call, Throwable throwable) {
+                            throwable.printStackTrace();
+                            Toast.makeText(context, "Não foi possível sincronizar suas compras", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            );
+        }
     }
 }

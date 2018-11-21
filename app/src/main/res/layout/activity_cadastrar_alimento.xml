@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:id="@+id/edt_alimento_titulo"
-                android:textColor="?attr/textColor"
+                android:textColor="?attr/textColorPrimary"
                 android:hint="Nome do Alimento" />
         </android.support.design.widget.TextInputLayout>
 
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:id="@+id/edt_alimento_porcao"
-                    android:textColor="?attr/textColor"
+                    android:textColor="?attr/textColorPrimary"
                     android:hint="Porção" />
             </android.support.design.widget.TextInputLayout>
 
@@ -74,7 +74,7 @@
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:id="@+id/edt_alimento_unidade"
-                    android:textColor="?attr/textColor"
+                    android:textColor="?attr/textColorPrimary"
                     android:hint="U. Medida" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -102,7 +102,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_calorias"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
                         android:hint="Calorias" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_carboidratos"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
                         android:hint="Carboidratos" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_proteinas"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
                         android:hint="Proteínas" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -198,7 +198,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:id="@+id/edt_alimento_gorduras"
-                        android:textColor="?attr/textColor"
+                        android:textColor="?attr/textColorPrimary"
                         android:hint="Gorduras" />
 
                 </android.support.design.widget.TextInputLayout>

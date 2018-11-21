@@ -17,9 +17,9 @@ public interface AcompanhamentoDAO {
     @Insert void insert(ItemAcompanhamento item);
     @Update void update(ItemAcompanhamento item);
 
-    @Query("SELECT * FROM tbl_acompanhamento WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = DATE('NOW')")
-    ItemAcompanhamento selecionarDia();
+    @Query("SELECT * FROM tbl_acompanhamento WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = DATE('NOW') AND id_usuario = :idUsuario")
+    ItemAcompanhamento selecionarDia(int idUsuario);
 
-    @Query("SELECT * FROM tbl_acompanhamento WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = STRFTIME('%Y-%m-%d', :data / 1000, 'unixepoch')")
-    ItemAcompanhamento selecionarDia(Date data);
+    @Query("SELECT * FROM tbl_acompanhamento WHERE STRFTIME('%Y-%m-%d', data / 1000, 'unixepoch') = STRFTIME('%Y-%m-%d', :data / 1000, 'unixepoch') AND id_usuario = :idUsuario")
+    ItemAcompanhamento selecionarDia(int idUsuario, Date data);
 }

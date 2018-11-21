@@ -47,9 +47,12 @@
         <item name="android:windowIsFloating">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:textColor">@color/textColorDark</item>
         <item name="android:textColorSecondary">@color/textColor</item>
         <item name="android:textColorPrimary">@color/textColor</item>
+    </style>
+
+    <style name="TimePicker.Dark">
+        <item name="android:textColor">@color/textColorDark</item>
     </style>
 
     <style name="DialogBackgroundTitle" parent="android:Widget.TextView">
@@ -87,11 +90,6 @@
         <item name="colorControlNormal">#ffffff</item>
         <item name="colorControlActivated">#E85858</item>
         <item name="colorControlHighlight">#E85858</item>
-    </style>
-
-    <style name="TextAppearence.App.TextInputLayoutHome" parent="TextAppearence.App.TextInputLayout">
-        <item name="colorControlNormal">@color/colorPrimaryDark</item>
-        <item name="colorControlActivated">@color/colorPrimaryDark</item>
     </style>
 
     <style name="ThemeOverlay.AppCompat.NavTheme">

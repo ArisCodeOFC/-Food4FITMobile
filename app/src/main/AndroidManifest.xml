@@ -50,6 +50,7 @@
         </service>
 
         <receiver android:name="br.com.food4fit.broadcast.AlarmReceiver" />
+        <receiver android:name="br.com.food4fit.broadcast.CompraAlarmReceiver" />
 
         <activity
             android:name="br.com.food4fit.LoginActivity"
@@ -110,6 +111,15 @@
             android:name="br.com.food4fit.CadastrarAlimentoActivity"
             android:label="@string/title_activity_cadastrar_alimento"
             android:parentActivityName="br.com.food4fit.RefeicaoActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.food4fit.MainActivity" />
+        </activity>
+        <activity android:name="br.com.food4fit.DadosSaudeActivity"
+            android:excludeFromRecents="true"
+            android:label="@string/title_activity_dados_saude"
+            android:parentActivityName="br.com.food4fit.MainActivity"
+            android:theme="@style/AppTheme.Dialog">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.food4fit.MainActivity" />

@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 
 import java.util.Calendar;
+import java.util.List;
 
 import br.com.food4fit.config.AppDatabase;
+import br.com.food4fit.model.Compra;
 import br.com.food4fit.model.Dieta;
 import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.Usuario;
@@ -45,6 +47,20 @@ public class SetAlarmReceiver extends BroadcastReceiver {
                 Intent intent = new Intent(context, AlarmReceiver.class);
                 intent.putExtra("refeicao", refeicao.getData().getId());
                 AlarmUtils.addAlarm(context, intent, index, calendar);
+            }
+        }
+
+        List<Compra> compras = AppDatabase.getDatabase(context).getCompraDAO().selecionarTodos(usuario.getId());
+        for (int index = 0; index < compras.size(); index++) {
+            Compra compra = compras.get(index);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(compra.getData());
+            calendar.add(Calendar.DAY_OF_MONTH, compra.getQuantidade());
+            if (System.currentTimeMillis() <= calendar.getTimeInMillis()) {
+                Intent intent = new Intent(context, CompraAlarmReceiver.class);
+                intent.putExtra("id_ordem_servico", compra.getIdOrdemServico());
+                intent.putExtra("id_prato", compra.getIdPrato());
+                AlarmUtils.addAlarm(context, intent, index + 10000, calendar);
             }
         }
     }

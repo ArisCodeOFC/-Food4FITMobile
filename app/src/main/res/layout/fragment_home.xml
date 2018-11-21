@@ -85,7 +85,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 

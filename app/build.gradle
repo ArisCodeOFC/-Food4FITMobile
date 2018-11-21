@@ -40,7 +40,7 @@ android {
         cruncherEnabled = false
     }
     dexOptions {
-        javaMaxHeapSize "2g"
+        javaMaxHeapSize "2560MB"
         preDexLibraries true
     }
     lintOptions {

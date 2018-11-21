@@ -8,6 +8,7 @@ import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 
@@ -35,6 +36,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 Notification notification =
                         new NotificationCompat.Builder(context, CHANNEL_ID)
                                 .setSmallIcon(R.drawable.logo_4fit_simple)
+                                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.logo_4fit_simple))
                                 .setContentTitle("É hora de comer!")
                                 .setContentText(refeicao.getHorario() + " - " + refeicao.getTitulo())
                                 .setDefaults(NotificationCompat.DEFAULT_ALL)
