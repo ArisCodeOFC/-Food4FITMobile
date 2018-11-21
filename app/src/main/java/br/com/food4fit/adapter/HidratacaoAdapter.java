@@ -41,8 +41,8 @@ public class HidratacaoAdapter extends RecyclerView.Adapter<HidratacaoAdapter.Vi
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtHorario, txtQuantidade;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView txtHorario, txtQuantidade;
 
         private ViewHolder(View view) {
             super(view);
@@ -50,7 +50,7 @@ public class HidratacaoAdapter extends RecyclerView.Adapter<HidratacaoAdapter.Vi
             txtQuantidade = view.findViewById(R.id.txt_hidratacao_item_quantidade);
         }
 
-        public void bind(ItemHidratacao item) {
+        private void bind(ItemHidratacao item) {
             txtHorario.setText(new SimpleDateFormat("HH:mm", Food4fitApp.LOCALE).format(item.getData()));
             txtQuantidade.setText(String.format(Food4fitApp.LOCALE, "%dmL", item.getQuantidade()));
         }

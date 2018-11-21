@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     private void logout() {
         new AlertDialog.Builder(this,
                 Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert)
@@ -149,7 +151,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Account[] accounts = accountManager.getAccountsByType("FOOD4FIT");
                 if (accounts.length > 0) {
                     AppDatabase.getDatabase(MainActivity.this).getUsuarioDAO().logout(usuario.getId());
-                    accountManager.removeAccount(accounts[0], null, null);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                        accountManager.removeAccount(accounts[0], null, null, null);
+                    } else {
+                        accountManager.removeAccount(accounts[0], null, null);
+                    }
+
                     AlarmUtils.cancelAllAlarms(getApplicationContext(), new Intent(getApplicationContext(), AlarmReceiver.class));
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();

@@ -82,19 +82,19 @@ public class DadosSaudeActivity extends AppCompatActivity {
             double imc = peso / (altura * altura);
             txtImc.setText(String.format(Food4fitApp.LOCALE, "%.2f", imc));
             if (imc < 17) {
-                txtConselho.setText("Muito abaixo do peso");
+                txtConselho.setText(R.string.conselho_imc_1);
             } else if (imc < 18.5) {
-                txtConselho.setText("Abaixo do peso");
+                txtConselho.setText(R.string.conselho_imc_2);
             } else if (imc < 25) {
-                txtConselho.setText("Peso normal");
+                txtConselho.setText(R.string.conselho_imc_3);
             } else if (imc < 30) {
-                txtConselho.setText("Acima do peso");
+                txtConselho.setText(R.string.conselho_imc_4);
             } else if (imc < 35) {
-                txtConselho.setText("Obesidade I");
+                txtConselho.setText(R.string.conselho_imc_5);
             } else if (imc < 40) {
-                txtConselho.setText("Obesidade II (severa)");
+                txtConselho.setText(R.string.conselho_imc_6);
             } else {
-                txtConselho.setText("Obesidade III (mórbida)");
+                txtConselho.setText(R.string.conselho_imc_7);
             }
         }
     }

@@ -26,7 +26,7 @@ import br.com.food4fit.model.Refeicao;
 public class RefeicaoActivity extends AppCompatActivity {
     private Dieta dieta;
     private Refeicao refeicao;
-    private List<Alimento> alimentos = new ArrayList<>();
+    private final List<Alimento> alimentos = new ArrayList<>();
     private AlimentoAdapter adapter;
     private TextView txtCalorias, txtCarboidratos, txtGorduras, txtProteinas;
 

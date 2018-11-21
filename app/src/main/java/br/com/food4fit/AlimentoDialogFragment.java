@@ -18,11 +18,6 @@ public class AlimentoDialogFragment extends BottomSheetDialogFragment {
     private View.OnClickListener listenerEditar;
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     public void setArguments(Bundle args) {
         alimento = (Alimento) args.getSerializable("alimento");
     }

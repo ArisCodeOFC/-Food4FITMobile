@@ -45,6 +45,7 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
     private Alimento alimento;
     private int unidadeSelecionada;
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,7 +223,7 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                                 dialog.dismiss();
                                 Toast.makeText(this, "Não foi possível processar a imagem", Toast.LENGTH_SHORT).show();
                             })
-                            .addOnProgressListener(taskSnapshot -> txtProgress.setText(String.format(Food4fitApp.LOCALE, "%d%%", (int) (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount())))
+                            .addOnProgressListener(taskSnapshot -> {if (txtProgress != null) txtProgress.setText(String.format(Food4fitApp.LOCALE, "%d%%", (int) (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount()));})
                             .addOnCompleteListener(task -> {
                                 if (task.isComplete()) {
                                     if (task.isSuccessful()) {
@@ -251,7 +252,10 @@ public class CadastrarAlimentoActivity extends AppCompatActivity implements IPic
                 }
 
             } else {
-                alimento.setImagem(this.alimento.getImagem());
+                if (this.alimento != null) {
+                    alimento.setImagem(this.alimento.getImagem());
+                }
+
                 finalizarCadastro(alimento);
             }
         }

@@ -41,6 +41,7 @@ public class Food4fitApp extends Application {
     private UnidadeMedida[] unidadesMedida;
     private StorageReference storageRef;
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @SuppressLint("CheckResult")
     @Override
     public void onCreate() {

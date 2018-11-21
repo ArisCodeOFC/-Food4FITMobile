@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:focusableInTouchMode="true"
         android:padding="16dp">
@@ -79,7 +79,6 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/TextAppearence.App.TextInputLayout"
             android:id="@+id/til_login_email"
             app:errorEnabled="true"
             android:textColorHint="#ffffff">
@@ -95,7 +94,6 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/TextAppearence.App.TextInputLayout"
             android:id="@+id/til_login_senha"
             app:errorEnabled="true"
             android:textColorHint="#ffffff">
@@ -121,6 +119,7 @@
                 android:layout_centerVertical="true"
                 android:textStyle="italic|bold"
                 android:fontFamily="sans-serif"
+                android:id="@+id/txt_esqueci_senha"
                 android:layout_marginLeft="5dp"
                 android:text="Esqueci minha senha" />
 

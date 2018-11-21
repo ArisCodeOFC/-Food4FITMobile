@@ -10,12 +10,11 @@ import br.com.food4fit.converter.DateConverter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity(tableName = "tbl_compra", primaryKeys = {"id_prato", "id_ordem_servico"})
 @TypeConverters(DateConverter.class)
 @Getter @Setter
-@EqualsAndHashCode @ToString
+@EqualsAndHashCode
 public class Compra {
     private Date data;
     private int quantidade;

@@ -40,17 +40,17 @@ public class RefeicaoAdapter extends RecyclerView.Adapter<RefeicaoAdapter.ViewHo
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtTitulo, txtCalorias, txtHorario;
+     class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView txtTitulo, txtCalorias, txtHorario;
 
-        public ViewHolder(View view) {
+        private ViewHolder(View view) {
             super(view);
             txtTitulo = view.findViewById(R.id.txt_titulo_refeicao);
             txtCalorias = view.findViewById(R.id.txt_calorias_refeicao);
             txtHorario = view.findViewById(R.id.txt_horario_refeicao);
         }
 
-        public void bind(Refeicao refeicao) {
+         private void bind(Refeicao refeicao) {
             txtTitulo.setText(refeicao.getData().getTitulo());
             txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", refeicao.getCalorias()));
             txtHorario.setText(refeicao.getData().getHorario());

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Map;
 
 import br.com.food4fit.Food4fitApp;
 import br.com.food4fit.food4fit.R;
@@ -22,10 +22,10 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
     private final Context context;
     private final LayoutInflater inflater;
     private final List<Refeicao> list;
-    private final Map<Integer, HistoricoAlimentacao> historico;
+    private final SparseArray<HistoricoAlimentacao> historico;
     private DietaAtivaRefeicaoAdapter.OnClick listenerAtualizarProgresso;
 
-    public DietaAtivaRefeicaoAdapter(Context context, List<Refeicao> list, Map<Integer, HistoricoAlimentacao> historico) {
+    public DietaAtivaRefeicaoAdapter(Context context, List<Refeicao> list, SparseArray<HistoricoAlimentacao> historico) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         this.list = list;
@@ -53,9 +53,9 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtTitulo, txtCalorias, txtHorario;
-        private CheckBox cbConcluida;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView txtTitulo, txtCalorias, txtHorario;
+        private final CheckBox cbConcluida;
 
         private ViewHolder(View view) {
             super(view);
@@ -65,11 +65,11 @@ public class DietaAtivaRefeicaoAdapter extends RecyclerView.Adapter<DietaAtivaRe
             cbConcluida = view.findViewById(R.id.cb_refeicao_concluida);
         }
 
-        public void bind(Refeicao refeicao) {
+        private void bind(Refeicao refeicao) {
             txtTitulo.setText(refeicao.getData().getTitulo());
             txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", refeicao.getCalorias()));
             txtHorario.setText(refeicao.getData().getHorario());
-            cbConcluida.setChecked(historico.containsKey(refeicao.getData().getId()));
+            cbConcluida.setChecked(historico.indexOfKey(refeicao.getData().getId()) >= 0);
 
             cbConcluida.setOnClickListener(v -> {
                 if (!cbConcluida.isChecked()) {

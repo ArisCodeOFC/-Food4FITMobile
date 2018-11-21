@@ -8,6 +8,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.config.RetrofitConfig;
@@ -49,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edt_login_email);
         tilSenha = findViewById(R.id.til_login_senha);
         edtSenha = findViewById(R.id.edt_login_senha);
+        TextView txtEsqueciSenha = findViewById(R.id.txt_esqueci_senha);
+        txtEsqueciSenha.setOnClickListener(view -> startActivity(new Intent(this, RecuperarSenhaActivity.class)));
     }
 
     private void setAccount(String email, String password, String authToken) {

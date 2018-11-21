@@ -29,7 +29,7 @@ import br.com.food4fit.model.Usuario;
 public class DietaActivity extends AppCompatActivity {
     private Dieta dieta;
     private RefeicaoAdapter adapter;
-    private List<Refeicao> refeicoes = new ArrayList<>();
+    private final List<Refeicao> refeicoes = new ArrayList<>();
     private TextView txtCalorias, txtCarboidratos, txtGorduras, txtProteinas;
     private Usuario usuario;
 

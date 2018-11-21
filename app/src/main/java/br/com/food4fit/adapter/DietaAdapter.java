@@ -1,6 +1,7 @@
 package br.com.food4fit.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,14 +23,15 @@ public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> 
         this.list = list;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_dieta, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bind(list.get(position));
     }
 
@@ -38,10 +40,10 @@ public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> 
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtTitulo, txtCalorias, txtCarboidratos, txtProteinas;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView txtTitulo, txtCalorias, txtCarboidratos, txtProteinas;
 
-        public ViewHolder(View view) {
+        private ViewHolder(View view) {
             super(view);
             txtTitulo = view.findViewById(R.id.txt_titulo_dieta);
             txtCalorias = view.findViewById(R.id.txt_calorias_dieta);
@@ -49,7 +51,7 @@ public class DietaAdapter extends RecyclerView.Adapter<DietaAdapter.ViewHolder> 
             txtProteinas = view.findViewById(R.id.txt_proteinas_dieta);
         }
 
-        public void bind(Dieta dieta) {
+        private void bind(Dieta dieta) {
             txtTitulo.setText(dieta.getData().getTitulo());
             txtCalorias.setText(String.format(Food4fitApp.LOCALE, "%.2fkcal", dieta.getCalorias()));
             txtCarboidratos.setText(String.format(Food4fitApp.LOCALE, "%.2fg carb", dieta.getCarboidratos()));

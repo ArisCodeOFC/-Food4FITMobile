@@ -41,8 +41,8 @@ public class CompraAdapter extends RecyclerView.Adapter<CompraAdapter.ViewHolder
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtTitulo, txtValor, txtData, txtQuantidade;
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView txtTitulo, txtValor, txtData, txtQuantidade;
 
         private ViewHolder(View view) {
             super(view);
@@ -52,7 +52,7 @@ public class CompraAdapter extends RecyclerView.Adapter<CompraAdapter.ViewHolder
             txtQuantidade = view.findViewById(R.id.txt_compra_quantidade);
         }
 
-        public void bind(Compra item) {
+        private void bind(Compra item) {
             txtTitulo.setText(item.getTitulo());
             txtValor.setText(String.format(Food4fitApp.LOCALE, "R$%.2f", item.getValor() * item.getQuantidade()));
             txtData.setText(String.format(Food4fitApp.LOCALE, "%s", new SimpleDateFormat("dd/MM/yyyy - HH:mm", Food4fitApp.LOCALE).format(item.getData())));

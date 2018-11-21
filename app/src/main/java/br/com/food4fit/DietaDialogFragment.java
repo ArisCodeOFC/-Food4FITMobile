@@ -19,11 +19,6 @@ public class DietaDialogFragment extends BottomSheetDialogFragment {
     private View.OnClickListener listenerAtivar;
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    @Override
     public void setArguments(Bundle args) {
         dieta = (Dieta) args.getSerializable("dieta");
     }

@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import br.com.food4fit.adapter.DietaAtivaRefeicaoAdapter;
 import br.com.food4fit.broadcast.SetAlarmReceiver;
@@ -34,7 +33,7 @@ import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.Usuario;
 
 public class HomeFragment extends Fragment {
-    private Map<Integer, HistoricoAlimentacao> historico;
+    private SparseArray<HistoricoAlimentacao> historico;
     private ProgressBar progressBarDieta;
     private TextView txtPorcentagem, txtMeta;
     private Usuario usuario;
@@ -123,9 +122,9 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    private Map<Integer, HistoricoAlimentacao> getHistorico() {
+    private SparseArray<HistoricoAlimentacao> getHistorico() {
         List<HistoricoAlimentacao> itensHistorico = AppDatabase.getDatabase(getContext()).getHistoricoAlimentacaoDAO().getHistoricoDia();
-        Map<Integer, HistoricoAlimentacao> historico = new HashMap<>();
+        SparseArray<HistoricoAlimentacao> historico = new SparseArray<>();
         for (HistoricoAlimentacao entry : itensHistorico) {
             historico.put(entry.getIdRefeicao(), entry);
         }
@@ -136,7 +135,7 @@ public class HomeFragment extends Fragment {
     private void atualizarProgresso(boolean animacao) {
         int progresso = 0;
         for (Refeicao refeicao : refeicoes) {
-            if (historico.containsKey(refeicao.getData().getId())) {
+            if (historico.indexOfKey(refeicao.getData().getId()) >= 0) {
                 progresso += 1;
             }
         }
