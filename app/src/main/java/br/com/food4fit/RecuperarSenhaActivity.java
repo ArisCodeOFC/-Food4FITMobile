@@ -17,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RecuperarSenhaActivity extends AppCompatActivity {
+    private Button btnEnviar;
     private EditText edtEmail;
 
     @Override
@@ -24,7 +25,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_senha);
 
-        Button btnEnviar = findViewById(R.id.btn_recuperar_senha_enviar);
+        btnEnviar = findViewById(R.id.btn_recuperar_senha_enviar);
         edtEmail = findViewById(R.id.edt_recuperar_senha_email);
 
         btnEnviar.setOnClickListener((view) -> this.enviarEmail());
@@ -45,10 +46,12 @@ public class RecuperarSenhaActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
 
+            btnEnviar.setEnabled(false);
             new RetrofitConfig().getUsuarioService().enviarEmailRecuperacao(email).enqueue(
                     new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
+                            btnEnviar.setEnabled(true);
                             if (response.code() == 404) {
                                 Snackbar.make(findViewById(android.R.id.content), "Email não encontrado", Snackbar.LENGTH_SHORT).show();
                             } else {
@@ -60,6 +63,7 @@ public class RecuperarSenhaActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
+                            btnEnviar.setEnabled(true);
                             t.printStackTrace();
                             Snackbar.make(findViewById(android.R.id.content), "Não foi possível concluir sua solicitação. Tente novamente", Snackbar.LENGTH_SHORT).show();
                         }

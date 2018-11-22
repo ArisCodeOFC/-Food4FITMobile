@@ -113,19 +113,26 @@ public class DietasFragment extends Fragment {
 
     private void ativarDieta(Dieta dieta) {
         if (getContext() != null && getActivity() != null) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),
-                    Food4fitApp.isDarkMode(getContext()) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
-            builder.setTitle("Ativar dieta");
-            builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
-            builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+            if (AppDatabase.getDatabase(getContext()).getDietaDAO().getDietaAtiva(usuario.getId()) == null) {
                 dieta.getData().setAtiva(true);
                 AppDatabase.getDatabase(getContext()).getDietaDAO().desativarDietas(usuario.getId());
                 AppDatabase.getDatabase(getContext()).getDietaDAO().update(dieta.getData());
                 Snackbar.make(getActivity().findViewById(android.R.id.content), "Você agora está seguindo a dieta '" + dieta.getData().getTitulo() + "'.", Snackbar.LENGTH_SHORT).show();
-            });
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(),
+                        Food4fitApp.isDarkMode(getContext()) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
+                builder.setTitle("Ativar dieta");
+                builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
+                builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+                    dieta.getData().setAtiva(true);
+                    AppDatabase.getDatabase(getContext()).getDietaDAO().desativarDietas(usuario.getId());
+                    AppDatabase.getDatabase(getContext()).getDietaDAO().update(dieta.getData());
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), "Você agora está seguindo a dieta '" + dieta.getData().getTitulo() + "'.", Snackbar.LENGTH_SHORT).show();
+                });
 
-            builder.setNegativeButton("Não", null);
-            builder.create().show();
+                builder.setNegativeButton("Não", null);
+                builder.create().show();
+            }
         }
     }
 }

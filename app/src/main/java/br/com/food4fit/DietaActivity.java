@@ -189,18 +189,25 @@ public class DietaActivity extends AppCompatActivity {
     }
 
     private void ativarDieta() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this,
-                Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
-        builder.setTitle("Ativar dieta");
-        builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
-        builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+        if (AppDatabase.getDatabase(this).getDietaDAO().getDietaAtiva(usuario.getId()) == null) {
             dieta.getData().setAtiva(true);
             AppDatabase.getDatabase(this).getDietaDAO().desativarDietas(usuario.getId());
             AppDatabase.getDatabase(this).getDietaDAO().update(dieta.getData());
             Snackbar.make(findViewById(android.R.id.content), "Você agora está seguindo a dieta '" + dieta.getData().getTitulo() + "'.", Snackbar.LENGTH_SHORT).show();
-        });
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this,
+                    Food4fitApp.isDarkMode(this) ? R.style.Theme_AppCompat_Dialog_Alert : R.style.Theme_AppCompat_Light_Dialog_Alert);
+            builder.setTitle("Ativar dieta");
+            builder.setMessage("Tem certeza que deseja tornar esta dieta ativa e passar a segui-la diariamente?");
+            builder.setPositiveButton("Sim", (dialogInterface, i) -> {
+                dieta.getData().setAtiva(true);
+                AppDatabase.getDatabase(this).getDietaDAO().desativarDietas(usuario.getId());
+                AppDatabase.getDatabase(this).getDietaDAO().update(dieta.getData());
+                Snackbar.make(findViewById(android.R.id.content), "Você agora está seguindo a dieta '" + dieta.getData().getTitulo() + "'.", Snackbar.LENGTH_SHORT).show();
+            });
 
-        builder.setNegativeButton("Não", null);
-        builder.create().show();
+            builder.setNegativeButton("Não", null);
+            builder.create().show();
+        }
     }
 }

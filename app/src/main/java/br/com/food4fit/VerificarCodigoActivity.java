@@ -17,6 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class VerificarCodigoActivity extends AppCompatActivity {
+    private Button btnVerificar;
     private EditText edtCodigo;
     private String email;
 
@@ -24,7 +25,7 @@ public class VerificarCodigoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verificar_codigo);
-        Button btnVerificar = findViewById(R.id.btn_verificar_codigo);
+        btnVerificar = findViewById(R.id.btn_verificar_codigo);
         edtCodigo = findViewById(R.id.edt_verficar_codigo);
         btnVerificar.setOnClickListener(view -> verificarCodigo());
         email = getIntent().getStringExtra("email");
@@ -42,10 +43,12 @@ public class VerificarCodigoActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
 
+            btnVerificar.setEnabled(false);
             new RetrofitConfig().getUsuarioService().verificarCodigo(email, codigo).enqueue(
                     new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
+                            btnVerificar.setEnabled(true);
                             if (response.code() == 403) {
                                 Snackbar.make(findViewById(android.R.id.content), "Código incorreto", Snackbar.LENGTH_SHORT).show();
                             } else {
@@ -58,6 +61,7 @@ public class VerificarCodigoActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
+                            btnVerificar.setEnabled(true);
                             t.printStackTrace();
                             Snackbar.make(findViewById(android.R.id.content), "Não foi possível concluir sua solicitação. Tente novamente", Snackbar.LENGTH_SHORT).show();
                         }

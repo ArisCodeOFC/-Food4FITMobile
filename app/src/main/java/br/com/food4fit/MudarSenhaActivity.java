@@ -18,6 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MudarSenhaActivity extends AppCompatActivity {
+    private Button btnSalvar;
     private EditText edtSenha, edtConfirmacao;
     private String email, codigo;
 
@@ -27,7 +28,7 @@ public class MudarSenhaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_mudar_senha);
         edtSenha = findViewById(R.id.edt_mudar_senha);
         edtConfirmacao = findViewById(R.id.edt_mudar_senha_confirmacao);
-        Button btnSalvar = findViewById(R.id.btn_mudar_senha);
+        btnSalvar = findViewById(R.id.btn_mudar_senha);
         btnSalvar.setOnClickListener(view -> salvarSenha());
         email = getIntent().getStringExtra("email");
         codigo = getIntent().getStringExtra("codigo");
@@ -49,10 +50,12 @@ public class MudarSenhaActivity extends AppCompatActivity {
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
 
+            btnSalvar.setEnabled(false);
             new RetrofitConfig().getUsuarioService().trocarSenha(email, codigo, senha).enqueue(
                     new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
+                            btnSalvar.setEnabled(true);
                             if (response.code() == 204) {
                                 Toast.makeText(MudarSenhaActivity.this, "Senha atualizada com sucesso", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(MudarSenhaActivity.this, LoginActivity.class);
@@ -66,6 +69,7 @@ public class MudarSenhaActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
+                            btnSalvar.setEnabled(true);
                             t.printStackTrace();
                             Snackbar.make(findViewById(android.R.id.content), "Não foi possível concluir sua solicitação. Tente novamente", Snackbar.LENGTH_SHORT).show();
                         }
