@@ -4,6 +4,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -75,39 +76,44 @@ public class LoginActivity extends AppCompatActivity {
             tilSenha.setError("Preencha uma senha");
             edtSenha.requestFocus();
         } else {
-            LoginModel model = new LoginModel(email, senha);
-            Call<Usuario> call = new RetrofitConfig().getUsuarioService().login(model);
-            call.enqueue(new Callback<Usuario>() {
-                @Override
-                public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                    if (response.code() == 401) {
-                        tilSenha.setError("Email ou senha incorretos.");
-                        edtSenha.setText("");
-                    } else {
-                        Usuario usuario = response.body();
-                        if (usuario != null) {
-                            setAccount(usuario.getEmail(), senha, usuario.getHash());
-                            AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().insert(usuario);
-                            AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().login(usuario.getId());
-
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.putExtra("usuario", usuario);
-                            startActivity(intent);
-                            finish();
-                        } else {
+            if (((Food4fitApp) getApplication()).isNetworkAvailable()) {
+                LoginModel model = new LoginModel(email, senha);
+                Call<Usuario> call = new RetrofitConfig().getUsuarioService().login(model);
+                call.enqueue(new Callback<Usuario>() {
+                    @Override
+                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                        if (response.code() == 401) {
                             tilSenha.setError("Email ou senha incorretos.");
                             edtSenha.setText("");
+                        } else {
+                            Usuario usuario = response.body();
+                            if (usuario != null) {
+                                setAccount(usuario.getEmail(), senha, usuario.getHash());
+                                AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().insert(usuario);
+                                AppDatabase.getDatabase(LoginActivity.this).getUsuarioDAO().login(usuario.getId());
+
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("usuario", usuario);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                tilSenha.setError("Email ou senha incorretos.");
+                                edtSenha.setText("");
+                            }
                         }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
-                    tilSenha.setError("Erro na comunicação com o servidor");
-                    edtSenha.setText("");
-                    t.printStackTrace();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<Usuario> call, Throwable t) {
+                        tilSenha.setError("Erro na comunicação com o servidor");
+                        edtSenha.setText("");
+                        t.printStackTrace();
+                    }
+                });
+
+            } else {
+                Snackbar.make(findViewById(android.R.id.content), "Você precisa estar conectado à internet para realizar login", Snackbar.LENGTH_SHORT).show();
+            }
         }
     }
 }

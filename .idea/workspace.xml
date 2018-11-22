@@ -11,6 +11,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="food" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
@@ -22,203 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c20441ac-05ce-4067-bb13-dcf69321b6cb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_db_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_db_framework_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_room_common_1_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_persistence_room_runtime_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cardview_v7_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_exifinterface_27_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_preference_v7_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_27_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_27_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_7_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_7_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_7_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_PhilJay_MPAndroidChart_v3_0_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_jrvansuita_PickImage_2_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_ads_identifier_15_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_flags_15_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_api_16_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_measurement_base_16_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_stats_15_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_16_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_analytics_impl_16_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_16_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_interop_16_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_16_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_core_16_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_16_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_iid_interop_16_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_17_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_measurement_connector_impl_17_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_storage_16_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_10_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_14_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_jackson_2_3_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_3_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__de_hdodenhof_circleimageview_2_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_0_8_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_projectlombok_lombok_1_18_4_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Food4FITMobile.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_mudar_senha.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/javaCompile/taskJars.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.6/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Food4fit.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/16.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/16.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/17.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/17.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/18.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/18.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/19.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/19.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/20.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/br.com.food4fit.config.AppDatabase/20.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/AlimentoDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/AlimentoDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/CadastrarAlimentoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/CadastrarAlimentoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/ComprasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/ComprasFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DadosSaudeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DadosSaudeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DietaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DietaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DietaDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DietaDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DietasFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/DietasFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/Food4fitApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/Food4fitApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/HidratacaoFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/HidratacaoFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/HomeFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RefeicaoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RefeicaoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RefeicaoDialogFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RefeicaoDialogFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/account/Authenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/account/Authenticator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/AlimentoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/AlimentoAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/CompraAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/CompraAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/DietaAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/DietaAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/DietaAtivaRefeicaoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/DietaAtivaRefeicaoAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/HidratacaoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/HidratacaoAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/ItemClickSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/ItemClickSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/RefeicaoAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/RefeicaoAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/broadcast/CompraAlarmReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/broadcast/CompraAlarmReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/config/RetrofitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/config/RetrofitConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/dao/CompraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/dao/CompraDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/dao/DadosSaudeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/dao/DadosSaudeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/dao/HidratacaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/dao/HidratacaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/Compra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/ItemDadosSaude.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/ItemDadosSaude.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/ItemHidratacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/ItemHidratacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sync_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sync_black_24dp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dados_saude.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dados_saude.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compras.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_compras.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hidratacao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_hidratacao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_compra.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_compra.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_hidratacao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_hidratacao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_refeicao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_refeicao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_perfil.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_perfil.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-hdpi/baseline_exit_to_app_black_18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-hdpi/baseline_exit_to_app_black_24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-hdpi/baseline_exit_to_app_black_36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-hdpi/baseline_exit_to_app_black_48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-mdpi/baseline_exit_to_app_black_18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-mdpi/baseline_exit_to_app_black_24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-mdpi/baseline_exit_to_app_black_36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-mdpi/baseline_exit_to_app_black_48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xhdpi/baseline_exit_to_app_black_18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xhdpi/baseline_exit_to_app_black_24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xhdpi/baseline_exit_to_app_black_36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xhdpi/baseline_exit_to_app_black_48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxhdpi/baseline_exit_to_app_black_18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxhdpi/baseline_exit_to_app_black_24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxhdpi/baseline_exit_to_app_black_36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxhdpi/baseline_exit_to_app_black_48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxxhdpi/baseline_exit_to_app_black_18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxxhdpi/baseline_exit_to_app_black_24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxxhdpi/baseline_exit_to_app_black_36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable-xxxhdpi/baseline_exit_to_app_black_48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/res/drawable/baseline_exit_to_app_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-00-43-44-814.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-00-43-44-814.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-00-43-44-814.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-00-43-44-814.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-14-09-620.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-14-09-620.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-14-09-620.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-14-09-620.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-17-54-944.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-17-54-944.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-17-54-944.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-17-54-944.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-25-43-597.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-25-43-597.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-25-43-597.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-01-25-43-597.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-25-57-330.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-25-57-330.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-25-57-330.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-25-57-330.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-28-10-227.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-28-10-227.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-28-10-227.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-10-28-10-227.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-41-10-270.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-41-10-270.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-41-10-270.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-41-10-270.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-42-37-276.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-42-37-276.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-42-37-276.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-11-42-37-276.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-36-15-950.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-36-15-950.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-36-15-950.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-36-15-950.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-38-21-957.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-38-21-957.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-38-21-957.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-38-21-957.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-41-41-057.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-41-41-057.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-41-41-057.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-14-41-41-057.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-05-44-129.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-05-44-129.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-05-44-129.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-05-44-129.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-40-35-801.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-40-35-801.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-40-35-801.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-40-35-801.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-50-15-752.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-50-15-752.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-50-15-752.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-16-50-15-752.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-04-56-539.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-04-56-539.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-04-56-539.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-04-56-539.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-17-26-464.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-17-26-464.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-17-26-464.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-17-26-464.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-25-43-689.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-25-43-689.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-25-43-689.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-17-25-43-689.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-07-06-135.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-07-06-135.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-07-06-135.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-07-06-135.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-18-15-096.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-18-15-096.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-18-15-096.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-18-15-096.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-28-41-389.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-28-41-389.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-28-41-389.rawproto" beforeDir="false" afterPath="$PROJECT_DIR$/build/android-profile/profile-2018-11-19-18-28-41-389.rawproto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_mudar_senha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_mudar_senha.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -253,40 +75,58 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="activity_recuperar_senha.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml">
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="30" column="43" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="activity_verificar_codigo.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VerificarCodigoActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="809">
-              <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+            <state relative-caret-position="339">
+              <caret line="61" column="170" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="170" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_mudar_senha.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="447">
+              <caret line="116" column="9" lean-forward="true" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UsuarioService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_mudar_senha.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mudar_senha.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="497">
+              <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer2">
             <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-            </state>
           </provider>
         </entry>
       </file>
@@ -305,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mina</find>
       <find>Theme.NoActionBar</find>
       <find>mainactiv</find>
       <find>AppTheme.NoActionBar</find>
@@ -335,6 +174,7 @@
       <find>bind</find>
       <find>recuperar</find>
       <find>login</find>
+      <find>snack</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -2303,7 +2143,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_hidratacao.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_compras.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_compra.xml" />
@@ -2346,14 +2185,15 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_login.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_mudar_senha.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java" />
       </list>
     </option>
   </component>
@@ -2399,8 +2239,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -2408,10 +2246,23 @@
               <item name="Food4FITMobile" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
+            <path>
+              <item name="Food4FITMobile" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Food4FITMobile" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="food4fit" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -2720,38 +2571,38 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="8" />
-      <window_info id="Build Variants" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5031822" side_tool="true" weight="0.32982087" />
-      <window_info anchor="bottom" id="Logcat" order="10" sideWeight="0.4914712" weight="0.32876712" />
-      <window_info id="Capture Tool" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.4944312" weight="0.30136988" />
-      <window_info anchor="bottom" id="Inspection Results" sideWeight="0.49681783" weight="0.32982087" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="7" />
+      <window_info id="Build Variants" order="2" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info active="true" anchor="right" x="1003" y="248" width="1299" height="716" id="Preview" order="8" visible="true" weight="0.2792363" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5031822" side_tool="true" weight="0.32982087" />
+      <window_info anchor="right" x="1003" y="248" width="1299" height="716" id="Preview" order="8" weight="0.2792363" />
       <window_info anchor="bottom" id="Run" order="3" weight="0.32982087" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.48507464" weight="0.32876712" />
+      <window_info anchor="bottom" id="Logcat" order="10" sideWeight="0.4914712" visible="true" weight="0.32876712" />
       <window_info id="Captures" order="5" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14001592" />
-      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14001592" />
+      <window_info anchor="bottom" id="Build" order="0" sideWeight="0.4944312" weight="0.30136988" />
       <window_info anchor="right" id="Gradle" order="5" weight="0.32975337" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Device File Explorer" order="3" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4914712" weight="0.32900432" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.49681783" weight="0.32982087" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Gradle Console" order="12" sideWeight="0.51492536" side_tool="true" weight="0.32900432" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="2" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -2763,24 +2614,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/model/ItemAcompanhamento.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -2795,13 +2632,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="554">
           <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/CadastrarAlimentoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="211" column="54" lean-forward="true" selection-start-line="211" selection-start-column="54" selection-end-line="211" selection-end-column="54" />
         </state>
       </provider>
     </entry>
@@ -2889,13 +2719,7 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/res/drawable/baseline_exit_to_app_24.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="64" lean-forward="true" selection-start-column="64" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/res/drawable/baseline_exit_to_app_24.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/DietaAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -2914,10 +2738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#2614#2615#0" expanded="true" />
-            <element signature="e#2641#2642#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2936,22 +2756,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_cadastrar_alimento.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="62" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="62" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/adapter/DietaAtivaRefeicaoAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
           <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3005,13 +2822,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_refeicao.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/PickImage-2.2.4.aar/216220b96aaf62638abd85d16851b8bf/res/values/values.xml">
@@ -3054,48 +2871,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_login.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/AcompanhamentoFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+      <provider editor-type-id="android-designer2">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RefeicaoActivity.java">
@@ -3105,60 +2898,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="47" column="58" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="58" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/config/RetrofitConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/CadastrarAlimentoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="158" column="12" selection-start-line="158" selection-start-column="12" selection-end-line="158" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider editor-type-id="android-manifest">
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="138" column="11" lean-forward="true" selection-start-line="138" selection-start-column="11" selection-end-line="138" selection-end-column="11" />
+        <state>
+          <caret column="38" lean-forward="true" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/AcompanhamentoFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="12" column="54" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="16" column="97" selection-start-line="16" selection-start-column="97" selection-end-line="16" selection-end-column="97" />
+        <state relative-caret-position="528">
+          <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_recuperar_senha.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/RecuperarSenhaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="30" column="43" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="43" />
+        <state relative-caret-position="42">
+          <caret line="52" column="136" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="136" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_verificar_codigo.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/MudarSenhaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="809">
-          <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+        <state relative-caret-position="123">
+          <caret line="57" column="69" selection-start-line="57" selection-start-column="69" selection-end-line="57" selection-end-column="69" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_mudar_senha.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/service/UsuarioService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        <state relative-caret-position="528">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/VerificarCodigoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="61" column="170" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="170" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/com/food4fit/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="116" column="9" lean-forward="true" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
         </state>
       </provider>
     </entry>
