@@ -12,6 +12,11 @@
         android:focusableInTouchMode="true"
         android:padding="16dp">
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +49,7 @@
             android:fontFamily="sans-serif"
             android:gravity="left|center_vertical"
             android:paddingLeft="10dp"
+            android:id="@+id/btn_login_facebook"
             android:background="@drawable/facebook_button" />
 
         <Button
