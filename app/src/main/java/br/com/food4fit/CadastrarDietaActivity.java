@@ -68,6 +68,7 @@ public class CadastrarDietaActivity extends AppCompatActivity {
             dieta.setIdUsuario(((Food4fitApp) getApplication()).getUsuario().getId());
             if (this.dieta != null) {
                 dieta.setId(this.dieta.getData().getId());
+                dieta.setAtiva(this.dieta.getData().isAtiva());
                 AppDatabase.getDatabase(this).getDietaDAO().update(dieta);
             } else {
                 AppDatabase.getDatabase(this).getDietaDAO().insert(dieta);
