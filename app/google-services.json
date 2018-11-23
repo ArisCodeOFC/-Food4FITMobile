@@ -23,6 +23,22 @@
           }
         },
         {
+          "client_id": "688523810559-sns4gb7tgmsultoljhi931pp2q8gnqs1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.food4fit.food4fit",
+            "certificate_hash": "71d1bc5435f1f55781e647b662b177268a4de4e7"
+          }
+        },
+        {
+          "client_id": "688523810559-3u5t9pc4sta016jr646psaigjppscdra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.food4fit.food4fit",
+            "certificate_hash": "3509676c414a26826d759fa6abdda375099ac5ea"
+          }
+        },
+        {
           "client_id": "688523810559-7s5ltfdnnh32ng2semrafaurjm01tr6b.apps.googleusercontent.com",
           "client_type": 3
         }
