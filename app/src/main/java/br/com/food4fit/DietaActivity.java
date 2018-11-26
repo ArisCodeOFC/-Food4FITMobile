@@ -1,6 +1,9 @@
 package br.com.food4fit;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,7 +15,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -131,6 +144,24 @@ public class DietaActivity extends AppCompatActivity {
             editarDieta();
         } else if (id == R.id.item_dieta_tornar_ativa) {
             ativarDieta();
+        } else if (id == R.id.item_dieta_compartilhar) {
+            try {
+                Bitmap bitmap = new BarcodeEncoder().encodeBitmap("food4fit-app://" + new ObjectMapper().writeValueAsString(dieta), BarcodeFormat.QR_CODE, 600, 600);
+                Dialog builder = new Dialog(this);
+                builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                if (builder.getWindow() != null) {
+                    builder.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    ImageView imageView = new ImageView(this);
+                    imageView.setImageBitmap(bitmap);
+                    builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.MATCH_PARENT));
+                    builder.show();
+                }
+
+            } catch (WriterException | JsonProcessingException e) {
+                e.printStackTrace();
+            }
         }
 
         return super.onOptionsItemSelected(item);

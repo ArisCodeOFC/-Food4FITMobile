@@ -14,7 +14,7 @@ import br.com.food4fit.model.DietaEntity;
 
 @Dao
 public interface DietaDAO {
-    @Insert void insert(DietaEntity dieta);
+    @Insert long insert(DietaEntity dieta);
     @Update void update(DietaEntity dieta);
     @Delete void delete(DietaEntity dieta);
 

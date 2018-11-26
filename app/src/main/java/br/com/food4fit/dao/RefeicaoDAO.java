@@ -12,7 +12,7 @@ import br.com.food4fit.model.RefeicaoEntity;
 
 @Dao
 public interface RefeicaoDAO {
-    @Insert void insert(RefeicaoEntity refeicao);
+    @Insert long insert(RefeicaoEntity refeicao);
     @Update void update(RefeicaoEntity refeicao);
     @Delete void delete(RefeicaoEntity refeicao);
 

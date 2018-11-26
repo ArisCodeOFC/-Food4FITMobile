@@ -16,12 +16,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 
 import br.com.food4fit.broadcast.AlarmReceiver;
 import br.com.food4fit.config.AppDatabase;
 import br.com.food4fit.food4fit.R;
+import br.com.food4fit.model.Alimento;
+import br.com.food4fit.model.Dieta;
+import br.com.food4fit.model.Refeicao;
 import br.com.food4fit.model.Usuario;
 import br.com.food4fit.util.AlarmUtils;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -83,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         atualizarHeader();
 
         ((Food4fitApp) getApplication()).sincronizarImagens();
+
+        if (getIntent() != null) {
+            importarDieta();
+        }
     }
 
     public void atualizarHeader() {
@@ -180,5 +191,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         getSupportActionBar().show();
+    }
+
+    private void importarDieta() {
+        if (getIntent() != null && getIntent().getDataString() != null) {
+            String data = getIntent().getDataString();
+            if (!data.isEmpty() && data.startsWith("{")) {
+                try {
+                    Dieta dieta = new ObjectMapper().readValue(data, Dieta.class);
+                    if (dieta != null) {
+                        dieta.getData().setId(0);
+                        dieta.getData().setIdUsuario(usuario.getId());
+                        dieta.getData().setAtiva(true);
+                        long idDieta = AppDatabase.getDatabase(this).getDietaDAO().insert(dieta.getData());
+
+                        for (Refeicao refeicao : dieta.getRefeicoes()) {
+                            refeicao.getData().setId(0);
+                            refeicao.getData().setIdDieta((int) idDieta);
+                            long idRefeicao = AppDatabase.getDatabase(this).getRefeicaoDAO().insert(refeicao.getData());
+
+                            for (Alimento alimento : refeicao.getAlimentos()) {
+                                alimento.setId(0);
+                                alimento.setIdRefeicao((int) idRefeicao);
+                                AppDatabase.getDatabase(this).getAlimentoDAO().insert(alimento);
+                            }
+                        }
+                    }
+
+                    Toast.makeText(this, "Dieta importada com sucesso", Toast.LENGTH_LONG).show();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -66,7 +66,14 @@
             android:name="br.com.food4fit.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="food4fit-app" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="br.com.food4fit.CadastrarDietaActivity"
             android:excludeFromRecents="true"
